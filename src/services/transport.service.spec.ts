@@ -1,6 +1,7 @@
 import {TestBed} from '@angular/core/testing';
 import {TransportService} from './transport.service';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import {API_KEY} from '../constants/ApiConstants';
 
 describe('TransportService', () => {
     let service: TransportService;
@@ -20,7 +21,7 @@ describe('TransportService', () => {
 
     it('should call api for get data', () => {
         const endPoint: string = '/mock-end-point';
-        const expectedEndpoint: string = 'api.openweathermap.org/data/2.5/weather/mock-end-point';
+        const expectedEndpoint: string = `api.openweathermap.org/data/2.5/weather/mock-end-point&appid=${API_KEY}`;
         service.Read(endPoint).subscribe();
         const mockReq = httpTestingController.expectOne(expectedEndpoint);
 
