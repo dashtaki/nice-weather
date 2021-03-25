@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {TransportService} from '../transport.service';
-import {Observable} from 'rxjs';
-import {IWeather} from '../../interfaces/IWeather';
+import {combineLatest, Observable} from 'rxjs';
+import {ICurrentWeather} from '../../interfaces/ICurrentWeather';
 
 @Injectable({
     providedIn: 'root'
@@ -13,17 +13,27 @@ export class WeatherService {
     /**
      * @returns string[]; list of cities name
      */
-    public getCities(): string[] {
+    get cities(): string[] {
         return ['london', 'tallinn', 'amsterdam', 'berlin', 'paris'];
     }
 
     /**
+     * Call weather API for getting current weather of the cities
+     * Unit is `metric`:
+     *          wind speed is `meter/sec`
+     *          temperature is `Celsius`
      *
-     * @param cityName: string city name
-     * returns Observable<IWeather>; weather data of a city
+     * * @see [Current Weather Data](https://openweathermap.org/current#data)
+     *
+     * @returns Observable<ICurrentWeather>; list of current weather of the cities
      */
-    public getCurrentWeather(cityName: string): Observable<IWeather> {
-        const url: string = `?q=${cityName}`;
-        return this.transportService.Read(url);
+    public getCurrentWeather(): Observable<ICurrentWeather[]> {
+        const citiesData$: Observable<ICurrentWeather>[] = [];
+        this.cities.forEach((city: string) => {
+            const url: string = `?q=${city}&units=metric`;
+            citiesData$.push(this.transportService.Read<ICurrentWeather>(url));
+        });
+
+        return combineLatest(citiesData$);
     }
 }

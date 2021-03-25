@@ -1,4 +1,4 @@
-export interface IWeather {
+export interface ICurrentWeather {
     coord: ICoordination;
     weather: IWeatherData[];
     base: string;
@@ -47,7 +47,7 @@ interface IClouds {
 interface ISys {
     type: number;
     id: number;
-    message: number;
+    message?: number;
     country: string;
     sunrise: number;
     sunset: number;

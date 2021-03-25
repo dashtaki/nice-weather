@@ -1,1 +1,14 @@
-<p>cities-list works!</p>
+<section class="d-flex justify-content-center align-items-center w-100 h-100 min-vh-100 current-weather__wrapper">
+    <ul class="current-weather__card">
+        <li *ngFor="let city of citiesWeather">
+            <h2 class="current-weather__city-name">{{city.name}}</h2>
+            <img src='{{ makeWeatherIconSrc(city.weather[0].icon) }}'
+                 class="current-weather__icon"
+                 alt="weather icon">
+            <h3 class="current-weather__temp">{{ceilingTemperature(city.main.temp)}} <span>&#8451;</span></h3>
+            <small class="current-weather__time">{{city.dt * 1000| date: 'MMM d, y, h:mm:ss a'}}</small>
+            <p class="pt-3">{{city.weather[0].main}}, <small>{{city.weather[0].description}}</small></p>
+            <p>Wind: {{city.wind.speed}} m/s, {{city.wind.deg}} &deg;</p>
+        </li>
+    </ul>
+</section>

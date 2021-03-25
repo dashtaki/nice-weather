@@ -21,15 +21,16 @@ describe('WeatherService', () => {
 
     it('should get all cities name', () => {
         const expectedCities: string[] = ['london', 'tallinn', 'amsterdam', 'berlin', 'paris'];
-        const actualCities = service.getCities();
+        const actualCities = service.cities;
 
         expect(actualCities).toEqual(expectedCities);
     });
 
     it('should get weather data of a city', () => {
-        const cityName: string = 'warsaw';
-        service.getCurrentWeather(cityName);
+        service.getCurrentWeather();
 
-        expect(mockTransportService.Read).toHaveBeenCalledOnceWith(`?q=${cityName}`);
+        service.cities.forEach((city: string) => {
+            expect(mockTransportService.Read).toHaveBeenCalledWith(`?q=${city}&units=metric`);
+        });
     });
 });

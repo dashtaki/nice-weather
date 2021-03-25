@@ -1,0 +1,120 @@
+.current-weather__wrapper {
+  background: -moz-linear-gradient(306deg, navy 0%, teal 45%, teal 67%);
+  /* ff3.6+ */
+  background: -webkit-gradient(
+                  linear,
+                  left top,
+                  right bottom,
+                  color-stop(0%, navy),
+                  color-stop(45%, teal),
+                  color-stop(67%, teal)
+  );
+  /* safari4+,chrome */
+  background: -webkit-linear-gradient(
+                  306deg,
+                  navy 0%,
+                  teal 45%,
+                  teal 67%
+  );
+  /* safari5.1+,chrome10+ */
+  background: -o-linear-gradient(306deg, navy 0%, teal 45%, teal 67%);
+  /* opera 11.10+ */
+  background: -ms-linear-gradient(306deg, navy 0%, teal 45%, teal 67%);
+  /* ie10+ */
+  background: linear-gradient(144deg, navy 0%, teal 45%, teal 67%);
+  /* w3c */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000080", endColorstr="#008080", GradientType=0);
+}
+
+.current-weather__card {
+  padding: 0;
+  margin: 3.125rem auto;
+  list-style: none;
+  text-align: center;
+  width: 100%;
+  z-index: 0;
+}
+
+.current-weather__card li {
+  display: inline-block;
+  width: 20%;
+  min-width: 15rem;
+  max-width: 14.375rem;
+  padding: {
+    top: 5rem;
+    right: 1.5rem;
+    bottom: 1rem;
+    left: 1.5rem;
+  }
+  position: relative;
+  vertical-align: top;
+  margin: 2rem;
+  min-height: 25vh;
+  background: white;
+  border: 0.063rem solid #252727;
+  text-align: left;
+  cursor: pointer;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: -0.125rem;
+    left: -0.125rem;
+    right: -0.125rem;
+    bottom: -0.125rem;
+    z-index: -1;
+    transform: skew(2deg, 2deg);
+    background: #c21500;
+    background: -webkit-linear-gradient(to right, #ffc500, #c21500);
+    background: linear-gradient(to right, #ffc500, #c21500);
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 40%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  &:hover h2 {
+    top: 0.625rem;
+    opacity: 0.6;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.125rem;
+    color: #b7b7b7;
+    margin-top: 0.313rem;
+  }
+}
+
+.current-weather__city-name {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0;
+  position: absolute;
+  opacity: 0.3;
+  top: 1.875rem;
+  color: black;
+  transition: all 0.3s ease-in-out;
+}
+
+.current-weather__icon {
+  width: 10rem;
+  transform: translateX(-50%);
+  margin-left: 50%;
+}
+
+.current-weather__temp {
+  color: #423d3d;
+  margin-bottom: 0;
+}
+
+.current-weather__time {
+  color: #b74b3c;
+}
+
