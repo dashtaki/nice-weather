@@ -10,3 +10,6 @@ export class AppComponent {
     constructor(public spinnerService: SpinnerService) {
     }
 }
+
+// prettier
+// interceptor folder
