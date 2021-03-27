@@ -1,6 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {UvIndexComponent} from './uv-index.component';
-import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, DebugElement} from '@angular/core';
+import {By} from '@angular/platform-browser';
 
 describe('UvIndexComponent', () => {
     let component: UvIndexComponent;
@@ -22,5 +23,19 @@ describe('UvIndexComponent', () => {
 
     it('should create', () => {
         expect(component).toBeTruthy();
+    });
+
+    it('should show feels kile icon', () => {
+        const icon: DebugElement = fixture.debugElement.query(By.css('fa-icon'));
+
+        expect(icon.nativeElement.icon.iconName).toEqual('umbrella-beach');
+    });
+
+    it('should show UV index', () => {
+        component.uvIndex = 5;
+        fixture.detectChanges();
+        const uvIndex: DebugElement = fixture.debugElement.query(By.css('span'));
+
+        expect(uvIndex.nativeElement.textContent).toContain('5');
     });
 });
