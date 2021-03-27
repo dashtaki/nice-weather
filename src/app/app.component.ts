@@ -16,3 +16,4 @@ export class AppComponent {
 // TODO: supprt alert in forecast
 // TODO: handle undefined coordination
 // TODO: rename hourly-weather to  forecast
+// TODO: think about ng-containers
