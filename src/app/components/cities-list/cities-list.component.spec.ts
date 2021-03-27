@@ -8,23 +8,28 @@ import {DebugElement} from '@angular/core';
 import {RouterTestingModule} from '@angular/router/testing';
 import {Router} from '@angular/router';
 import {ICoordination} from '../../../interfaces/ICoordination';
+import {SpinnerService} from '../../../services/spinner/spinner.service';
 
 describe('CitiesListComponent', () => {
     let component: CitiesListComponent;
     let fixture: ComponentFixture<CitiesListComponent>;
-    let currentWeatherService;
+    let mockCurrentWeatherService;
+    let mockSpinnerService;
     let mockRouter;
 
     beforeEach(async () => {
-        currentWeatherService = jasmine.createSpyObj(['getCurrentWeather']);
-        currentWeatherService.getCurrentWeather.and.returnValue(of(mockCurrentWeathers));
+        mockCurrentWeatherService = jasmine.createSpyObj(['getCurrentWeather']);
+        mockCurrentWeatherService.getCurrentWeather.and.returnValue(of(mockCurrentWeathers));
         mockRouter = jasmine.createSpyObj(['navigate']);
+
+        mockSpinnerService = jasmine.createSpyObj(['loading']);
 
         await TestBed.configureTestingModule({
             declarations: [CitiesListComponent],
             imports: [RouterTestingModule],
             providers: [
-                {provide: CurrentWeatherService, useValue: currentWeatherService},
+                {provide: CurrentWeatherService, useValue: mockCurrentWeatherService},
+                {provide: SpinnerService, useValue: mockSpinnerService},
                 {provide: Router, useValue: mockRouter},
             ]
         })
@@ -39,6 +44,11 @@ describe('CitiesListComponent', () => {
 
     it('should create', () => {
         expect(component).toBeTruthy();
+    });
+
+    it('should get current weathers', () => {
+
+        expect(mockCurrentWeatherService.getCurrentWeather).toHaveBeenCalled();
     });
 
     it('should show list of cities', () => {

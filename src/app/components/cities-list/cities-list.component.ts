@@ -1,9 +1,8 @@
 import {Component} from '@angular/core';
 import {ICurrentWeather} from '../../../interfaces/ICurrentWeather';
-import {CurrentWeatherService} from '../../../services/current-weather/current-weather.service';
 import {Router} from '@angular/router';
-import {WeatherDetailHelperService} from '../../../helpers/weather-detail/weather-detail-helper.service';
 import {ICoordination} from '../../../interfaces/ICoordination';
+import {CitiesListFacadeService} from '../../../facade/cities-list/cities-list-facade.service';
 
 @Component({
     selector: 'app-cities-list',
@@ -13,15 +12,19 @@ import {ICoordination} from '../../../interfaces/ICoordination';
 export class CitiesListComponent {
     public citiesWeather: ICurrentWeather[] = [];
 
-    constructor(public currentWeatherService: CurrentWeatherService,
-                public weatherDetailHelper: WeatherDetailHelperService,
+    constructor(public citiesListFacadeService: CitiesListFacadeService,
                 private router: Router) {
         this.getCitiesWeatherData();
     }
 
     private getCitiesWeatherData(): void {
-        this.currentWeatherService.getCurrentWeather()
-            .subscribe((weathers: ICurrentWeather[]) => this.citiesWeather = weathers);
+        this.citiesListFacadeService.spinnerService.loading = true;
+        this.citiesListFacadeService.currentWeatherService
+            .getCurrentWeather()
+            .subscribe((weathers: ICurrentWeather[]) => {
+                this.citiesWeather = weathers;
+                this.citiesListFacadeService.spinnerService.loading = false;
+            });
     }
 
     public showHourlyForecast(coordination: ICoordination): void {

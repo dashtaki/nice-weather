@@ -3,12 +3,12 @@
         <li *ngFor="let city of citiesWeather" (click)="showHourlyForecast(city.coord)">
             <h2 class="current-weather__city-name">{{city.name}}</h2>
 
-            <img src='{{ weatherDetailHelper.makeWeatherIconSrc(city.weather[0].icon) }}'
+            <img src='{{ citiesListFacadeService.weatherDetailHelper.makeWeatherIconSrc(city.weather[0].icon) }}'
                  class="current-weather__icon"
                  alt="weather icon">
 
             <h3 class="current-weather__temp">
-                {{weatherDetailHelper.ceilingNumber(city.main.temp)}}
+                {{citiesListFacadeService.weatherDetailHelper.ceilingNumber(city.main.temp)}}
                 <span>&deg;C</span>
 
             </h3>

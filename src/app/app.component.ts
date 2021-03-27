@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {SpinnerService} from '../services/spinner/spinner.service';
 
 @Component({
     selector: 'app-root',
@@ -6,15 +7,14 @@ import {Component} from '@angular/core';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+    constructor(public spinnerService: SpinnerService) {
+    }
 }
 
 // TODO: CSS: variable for colors
-// TODO: Spinner
 // TODO: Documentation
 // TODO: api key should e=be get from BE
-// TODO: create moduel for forcaste
 // TODO: supprt alert in forecast
 // TODO: handle undefined coordination
-// TODO: rename hourly-weather to  forecast
 // TODO: think about ng-containers
-// TODO: split weeather service to tow services
+// TODO: lint
