@@ -7,6 +7,7 @@ import {mockCurrentWeathers} from '../../../mock-data/current-weather';
 import {DebugElement} from '@angular/core';
 import {RouterTestingModule} from '@angular/router/testing';
 import {Router} from '@angular/router';
+import {ICoordination} from '../../../interfaces/ICoordination';
 
 describe('CitiesListComponent', () => {
     let component: CitiesListComponent;
@@ -61,7 +62,7 @@ describe('CitiesListComponent', () => {
     it('should show weather Temperature', () => {
         const weatherTemp: DebugElement = fixture.debugElement.query(By.css('.current-weather__temp'));
 
-        expect(weatherTemp.nativeElement.textContent).toEqual('10 ℃');
+        expect(weatherTemp.nativeElement.textContent).toContain('10 °C');
     });
 
     it('should show weather date and time', () => {
@@ -94,10 +95,11 @@ describe('CitiesListComponent', () => {
         expect(windDegree.nativeElement.textContent).toContain('210');
     });
 
-    xit('should go to weather detail on click', () => {
+    it('should go to weather detail on click', () => {
+        const expectedCoordination: ICoordination = {lon: -0.1257, lat: 51.5085};
         const currentWeather: DebugElement = fixture.debugElement.query(By.css('.current-weather__wrapper ul li:first-child'));
         currentWeather.triggerEventHandler('click', null);
 
-        expect(mockRouter.navigate).toHaveBeenCalledWith(['/expectedUrl']);
+        expect(mockRouter.navigate).toHaveBeenCalledWith(['/hourly'], {queryParams: expectedCoordination});
     });
 });
