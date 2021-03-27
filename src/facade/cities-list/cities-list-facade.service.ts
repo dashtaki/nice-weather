@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
-import { CurrentWeatherService } from '../../services/current-weather/current-weather.service';
-import { SpinnerService } from '../../services/spinner/spinner.service';
 import {WeatherDetailHelperService} from '../../app/helpers/weather-detail/weather-detail-helper.service';
+import {CurrentWeatherService} from '../../app/services/current-weather/current-weather.service';
+import {SpinnerService} from '../../app/services/spinner/spinner.service';
 
 @Injectable({
     providedIn: 'root',

@@ -9,7 +9,7 @@ import {
 import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { catchError } from 'rxjs/operators';
-import { SpinnerService } from '../../services/spinner/spinner.service';
+import {SpinnerService} from '../services/spinner/spinner.service';
 
 @Injectable()
 export class ApiInterceptor implements HttpInterceptor {

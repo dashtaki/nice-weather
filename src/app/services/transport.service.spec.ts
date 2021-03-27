@@ -4,7 +4,7 @@ import {
     HttpClientTestingModule,
     HttpTestingController,
 } from '@angular/common/http/testing';
-import { API_KEY } from '../constants/ApiConstants';
+import { API_KEY } from '../../constants/ApiConstants';
 
 describe('TransportService', () => {
     let service: TransportService;

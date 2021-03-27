@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SpinnerService } from '../services/spinner/spinner.service';
+import {SpinnerService} from './services/spinner/spinner.service';
 
 @Component({
     selector: 'app-root',
@@ -9,6 +9,3 @@ import { SpinnerService } from '../services/spinner/spinner.service';
 export class AppComponent {
     constructor(public spinnerService: SpinnerService) {}
 }
-
-// prettier
-// interceptor folder

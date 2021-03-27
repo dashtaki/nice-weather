@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { HourlyForecastService } from './hourly-forecast.service';
 import { TransportService } from '../transport.service';
-import { ICoordination } from '../../interfaces/ICoordination';
+import { ICoordination } from '../../../interfaces/ICoordination';
 
 describe('HourlyForecastService', () => {
     let service: HourlyForecastService;

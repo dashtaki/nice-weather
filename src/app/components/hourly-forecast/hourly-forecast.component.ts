@@ -3,8 +3,8 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { IHourlyForecast } from '../../../interfaces/IHourlyForecast';
 import { ICoordination } from '../../../interfaces/ICoordination';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
-import { HourlyForecastService } from '../../../services/hourly-forecast/hourly-forecast.service';
-import { SpinnerService } from '../../../services/spinner/spinner.service';
+import {SpinnerService} from '../../services/spinner/spinner.service';
+import {HourlyForecastService} from '../../services/hourly-forecast/hourly-forecast.service';
 
 @Component({
     selector: 'app-hourly-forecast',
