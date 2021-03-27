@@ -9,14 +9,12 @@ import {AppRoutingModule} from './app-routing.module';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {HourlyForecastModule} from './components/hourly-forecast/hourly-forecast.module';
 import {SharedModule} from './components/shared/shared.module';
-import {NotFoundComponent} from './components/shared/not-found/not-found.component';
 import {ApiInterceptor} from './interceptors/api.interceptor';
 
 const DECLARATIONS: any[] = [
     AppComponent,
     CitiesListComponent,
     HourlyForecastComponent,
-    NotFoundComponent
 ];
 
 const MODULES: any[] = [

@@ -11,7 +11,9 @@ export class ApiInterceptor implements HttpInterceptor {
     }
 
     private handleAuthError(err: HttpErrorResponse): Observable<any> {
-        // if (err.status === 401 || err.status === 403) {
+        if (err.status === 401) {
+            this.router.navigateByUrl(`/unauthorized`);
+        }
         if (err.status === 400) {
             this.router.navigateByUrl(`/not-found`);
         }

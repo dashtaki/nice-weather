@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {Route, RouterModule} from '@angular/router';
 import {CitiesListComponent} from './components/cities-list/cities-list.component';
 import {NotFoundComponent} from './components/shared/not-found/not-found.component';
+import {UnauthorizedComponent} from './components/shared/unauthorized/unauthorized.component';
 
 const routes: Route[] = [
     {
@@ -22,6 +23,10 @@ const routes: Route[] = [
         path: 'not-found',
         component: NotFoundComponent
     },
+    {
+        path: 'unauthorized',
+        component: UnauthorizedComponent
+    }
 ];
 
 @NgModule({
