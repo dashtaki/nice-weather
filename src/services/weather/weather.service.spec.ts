@@ -20,7 +20,7 @@ describe('WeatherService', () => {
     });
 
     it('should get all cities name', () => {
-        const expectedCities: string[] = ['london', 'tallinn', 'amsterdam', 'berlin', 'paris'];
+        const expectedCities: string[] = ['tehran', 'tallinn', 'amsterdam', 'berlin', 'paris'];
         const actualCities = service.cities;
 
         expect(actualCities).toEqual(expectedCities);
@@ -30,7 +30,8 @@ describe('WeatherService', () => {
         service.getCurrentWeather();
 
         service.cities.forEach((city: string) => {
-            expect(mockTransportService.Read).toHaveBeenCalledWith(`?q=${city}&units=metric`);
+            expect(mockTransportService.Read)
+                .toHaveBeenCalledWith(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric`);
         });
     });
 });

@@ -21,7 +21,7 @@ describe('TransportService', () => {
 
     it('should call api for get data', () => {
         const endPoint: string = '/mock-end-point';
-        const expectedEndpoint: string = `https://api.openweathermap.org/data/2.5/weather/mock-end-point&appid=${API_KEY}`;
+        const expectedEndpoint: string = `/mock-end-point&appid=${API_KEY}`;
         service.Read(endPoint).subscribe();
         const mockReq = httpTestingController.expectOne(expectedEndpoint);
 
