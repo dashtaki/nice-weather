@@ -1,25 +1,26 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { UvIndexComponent } from './uv-index.component';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {UvIndexComponent} from './uv-index.component';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 
 describe('UvIndexComponent', () => {
-  let component: UvIndexComponent;
-  let fixture: ComponentFixture<UvIndexComponent>;
+    let component: UvIndexComponent;
+    let fixture: ComponentFixture<UvIndexComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ UvIndexComponent ]
-    })
-    .compileComponents();
-  });
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            declarations: [UvIndexComponent],
+            schemas: [CUSTOM_ELEMENTS_SCHEMA],
+        })
+            .compileComponents();
+    });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(UvIndexComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(UvIndexComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });
