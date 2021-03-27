@@ -10,6 +10,7 @@ import {TimeComponent} from './time/time.component';
 import {RouterModule, Routes} from '@angular/router';
 import {HourlyForecastComponent} from './hourly-forecast.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {HourDetailComponent} from './hour-detail/hour-detail.component';
 
 const routes: Routes = [
     {
@@ -25,7 +26,8 @@ const DECLARATIONS: any[] = [
     UvIndexComponent,
     FeelsLikeComponent,
     TemperatureComponent,
-    TimeComponent
+    TimeComponent,
+    HourDetailComponent
 ];
 
 @NgModule({

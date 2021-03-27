@@ -1,0 +1,35 @@
+<div class="mt-4">
+    <div class="row" *ngFor="let hourData of hourDetail">
+        <div class="col">
+            <app-time [uniTime]="hourData.dt"></app-time>
+        </div>
+
+        <div class="col">
+            <app-temperature [temperature]="hourData.temp"></app-temperature>
+        </div>
+
+        <div class="col">
+            <app-icon [icon]="hourData.weather[0].icon" [weatherText]="hourData.weather[0].main"></app-icon>
+        </div>
+
+        <div class="col">
+            <app-humidity [humidity]="hourData.humidity"></app-humidity>
+        </div>
+
+        <div class="col">
+            <app-feels-like [feelsLike]="hourData.feels_like"></app-feels-like>
+        </div>
+
+        <div class="col">
+            <app-wind [windSpeed]="hourData.wind_speed" [windDegree]="hourData.wind_deg"></app-wind>
+        </div>
+
+        <div class="col">
+            <app-uv-index [uvIndex]="hourData.uvi"></app-uv-index>
+        </div>
+
+        <div class="col">
+            <small>{{hourData.weather[0].description}}</small>
+        </div>
+    </div>
+</div>

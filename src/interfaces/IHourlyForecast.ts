@@ -1,4 +1,4 @@
-import {IWeather} from './IWeather';
+import {IHourData} from './IHourData';
 
 export interface IHourlyForecast {
     alerts: IAlert[];
@@ -15,21 +15,4 @@ interface IAlert {
     event: string;
     sender_name: string;
     start: number;
-}
-
-interface IHourData {
-    clouds: number;
-    dew_point: number;
-    dt: null;
-    feels_like: number;
-    humidity: number;
-    pop: number;
-    pressure: number;
-    temp: number;
-    uvi: number;
-    visibility: number;
-    weather: IWeather[];
-    wind_deg: number;
-    wind_gust: number;
-    wind_speed: number;
 }
