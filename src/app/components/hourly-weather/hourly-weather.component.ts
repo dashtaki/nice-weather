@@ -36,6 +36,10 @@ export class HourlyWeatherComponent {
     }
 
     public getCityNameFromTimeZone(timeZone: string): string {
+        if (!timeZone) {
+            return;
+        }
+
         return timeZone.split('/')[1];
     }
 }
