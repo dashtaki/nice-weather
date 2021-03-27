@@ -1,31 +1,3 @@
-.current-weather__wrapper {
-  background: -moz-linear-gradient(306deg, navy 0%, teal 45%, teal 67%);
-  /* ff3.6+ */
-  background: -webkit-gradient(
-                  linear,
-                  left top,
-                  right bottom,
-                  color-stop(0%, navy),
-                  color-stop(45%, teal),
-                  color-stop(67%, teal)
-  );
-  /* safari4+,chrome */
-  background: -webkit-linear-gradient(
-                  306deg,
-                  navy 0%,
-                  teal 45%,
-                  teal 67%
-  );
-  /* safari5.1+,chrome10+ */
-  background: -o-linear-gradient(306deg, navy 0%, teal 45%, teal 67%);
-  /* opera 11.10+ */
-  background: -ms-linear-gradient(306deg, navy 0%, teal 45%, teal 67%);
-  /* ie10+ */
-  background: linear-gradient(144deg, navy 0%, teal 45%, teal 67%);
-  /* w3c */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000080", endColorstr="#008080", GradientType=0);
-}
-
 .current-weather__card {
   padding: 0;
   margin: 3.125rem auto;

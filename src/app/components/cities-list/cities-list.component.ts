@@ -1,6 +1,9 @@
 import {Component} from '@angular/core';
 import {ICurrentWeather} from '../../../interfaces/ICurrentWeather';
 import {WeatherService} from '../../../services/weather/weather.service';
+import {Router} from '@angular/router';
+import {WeatherDetailHelperService} from '../../helpers/weather-detail/weather-detail-helper.service';
+import {ICoordination} from '../../../interfaces/ICoordination';
 
 @Component({
     selector: 'app-cities-list',
@@ -10,7 +13,9 @@ import {WeatherService} from '../../../services/weather/weather.service';
 export class CitiesListComponent {
     public citiesWeather: ICurrentWeather[] = [];
 
-    constructor(public weatherService: WeatherService) {
+    constructor(public weatherService: WeatherService,
+                public weatherDetailHelper: WeatherDetailHelperService,
+                private router: Router) {
         this.getCitiesWeatherData();
     }
 
@@ -19,11 +24,8 @@ export class CitiesListComponent {
             .subscribe((weathers: ICurrentWeather[]) => this.citiesWeather = weathers);
     }
 
-    public makeWeatherIconSrc(icon: string): string {
-        return `http://openweathermap.org/img/wn/${icon}@4x.png`;
-    }
-
-    public ceilingTemperature(temp: number): number {
-        return Math.ceil(temp);
+    public showHourlyWeather(coordination: ICoordination): void {
+        const {lat, lon} = coordination;
+        this.router.navigate(['/hourly'], {queryParams: {lat, lon}});
     }
 }

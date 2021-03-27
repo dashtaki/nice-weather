@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {environment} from '../environments/environment';
 import {Observable} from 'rxjs';
 import {API_KEY} from '../constants/ApiConstants';
 
@@ -12,11 +11,13 @@ export class TransportService {
     }
 
     /**
-     * @param endpoint: string endpoint url
-     * @returns string; full url
+     * Get full url with appended API key
+     *
+     * @param url;
+     * @returns string;
      */
-    private urlMaker(endpoint: string): string {
-        return `${environment.api}${endpoint}&appid=${API_KEY}`;
+    private urlMaker(url: string): string {
+        return `${url}&appid=${API_KEY}`;
     }
 
     /**

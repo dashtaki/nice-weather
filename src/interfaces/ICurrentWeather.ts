@@ -1,6 +1,9 @@
+import {IWeather} from './IWeather';
+import {ICoordination} from './ICoordination';
+
 export interface ICurrentWeather {
     coord: ICoordination;
-    weather: IWeatherData[];
+    weather: IWeather[];
     base: string;
     main: IMain;
     visibility: number;
@@ -14,16 +17,13 @@ export interface ICurrentWeather {
     cod: number;
 }
 
-interface ICoordination {
-    lon: number;
-    lat: number;
-}
-
-interface IWeatherData {
+interface ISys {
+    type: number;
     id: number;
-    main: string;
-    description: string;
-    icon: string;
+    message?: number;
+    country: string;
+    sunrise: number;
+    sunset: number;
 }
 
 interface IMain {
@@ -33,6 +33,9 @@ interface IMain {
     temp_max: number;
     pressure: number;
     humidity: number;
+    sea_level?: number;
+    grnd_level?: number;
+    temp_kf?: number;
 }
 
 interface IWind {
@@ -42,13 +45,4 @@ interface IWind {
 
 interface IClouds {
     all: number;
-}
-
-interface ISys {
-    type: number;
-    id: number;
-    message?: number;
-    country: string;
-    sunrise: number;
-    sunset: number;
 }
