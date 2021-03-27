@@ -1,3 +1,5 @@
+@import 'src/assets/styles/mixin';
+
 .current-weather__card {
   padding: 0;
   margin: 3.125rem auto;
@@ -28,27 +30,7 @@
   cursor: pointer;
 
   &:before {
-    content: '';
-    position: absolute;
-    top: -0.125rem;
-    left: -0.125rem;
-    right: -0.125rem;
-    bottom: -0.125rem;
-    z-index: -1;
-    transform: skew(2deg, 2deg);
-    background: #c21500;
-    background: -webkit-linear-gradient(to right, #ffc500, #c21500);
-    background: linear-gradient(to right, #ffc500, #c21500);
-  }
-
-  &:after {
-    content: '';
-    position: absolute;
-    width: 40%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    background: rgba(255, 255, 255, 0.02);
+    @include box-gradiant(2deg, 2deg);
   }
 
   &:hover h2 {

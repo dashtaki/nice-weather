@@ -11,11 +11,6 @@ export class AppComponent {
     }
 }
 
-// TODO: CSS: variable for colors
 // TODO: Documentation
-// TODO: api key should e=be get from BE
-// TODO: supprt alert in forecast
-// TODO: handle undefined coordination
-// TODO: think about ng-containers
+// TODO: support alert in forecast
 // TODO: lint
-// TODO: test for interceptor

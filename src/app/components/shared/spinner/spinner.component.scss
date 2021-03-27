@@ -38,14 +38,14 @@
 
 @keyframes animate2 {
   0% {
-    box-shadow: inset red 0 0 0 17px;
+    box-shadow: inset red 0 0 0 1.063rem;
     transform: rotate(-140deg);
   }
   50% {
-    box-shadow: inset red 0 0 0 2px;
+    box-shadow: inset red 0 0 0 0.125rem;
   }
   100% {
-    box-shadow: inset red 0 0 0 17px;
+    box-shadow: inset red 0 0 0 1.063rem;
     transform: rotate(140deg);
   }
 }
