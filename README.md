@@ -86,11 +86,12 @@ I mean in most cases you can see the folder structure is like:
     - app
         - components: all components
              - shared: shared component
-    - services
-    - facade: facade services
-    - helpers: helper services 
+        - services
+        - facade: facade services
+        - helpers: helper services
+        - interceptors
+        - interfaces
     - constants: constant values
-    - interceptors
     - mock-data: all mocked data for testing purposes 
     - assets: all assets like fonts, images and also SASS files
     - environment
