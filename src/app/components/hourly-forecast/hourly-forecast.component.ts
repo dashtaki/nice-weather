@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
-import {WeatherService} from '../../../services/weather/weather.service';
 import {IHourlyForecast} from '../../../interfaces/IHourlyForecast';
 import {WeatherDetailHelperService} from '../../helpers/weather-detail/weather-detail-helper.service';
 import {ICoordination} from '../../../interfaces/ICoordination';
 import {faChevronLeft} from '@fortawesome/free-solid-svg-icons';
+import {HourlyForecastService} from '../../../services/hourly-forecast/hourly-forecast.service';
 
 @Component({
     selector: 'app-hourly-forecast',
@@ -17,7 +17,7 @@ export class HourlyForecastComponent {
 
     constructor(private route: ActivatedRoute,
                 public weatherDetailHelper: WeatherDetailHelperService,
-                private weatherService: WeatherService) {
+                private hourlyForecastService: HourlyForecastService) {
         this.getCoordinationFromQueryParam();
     }
 
@@ -31,7 +31,7 @@ export class HourlyForecastComponent {
     }
 
     private getHourlyForecastData(coordination: ICoordination): void {
-        this.weatherService.getHourlyForecastByCityName(coordination)
+        this.hourlyForecastService.getHourlyForecastByCityName(coordination)
             .subscribe((hourlyForecast: IHourlyForecast) => this.hourlyForecast = hourlyForecast);
     }
 

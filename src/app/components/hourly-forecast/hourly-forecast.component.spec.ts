@@ -2,31 +2,31 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {HourlyForecastComponent} from './hourly-forecast.component';
 import {ActivatedRoute} from '@angular/router';
 import {of} from 'rxjs';
-import {WeatherService} from '../../../services/weather/weather.service';
 import {hourlyForecastMock} from '../../../mock-data/hourly-forecast-mock';
 import {CUSTOM_ELEMENTS_SCHEMA, DebugElement} from '@angular/core';
 import {ICoordination} from '../../../interfaces/ICoordination';
 import {By} from '@angular/platform-browser';
+import {HourlyForecastService} from '../../../services/hourly-forecast/hourly-forecast.service';
 
 describe('HourlyForecastComponent', () => {
     let component: HourlyForecastComponent;
     let fixture: ComponentFixture<HourlyForecastComponent>;
     let mockActivatedRoute;
-    let mockWeatherService;
+    let hourlyForecastService;
 
     beforeEach(async () => {
         mockActivatedRoute = jasmine.createSpyObj(['queryParams']);
         mockActivatedRoute.queryParams = of({lat: 12, lon: 13});
 
-        mockWeatherService = jasmine.createSpyObj(['getHourlyForecastByCityName']);
-        mockWeatherService.getHourlyForecastByCityName.and.returnValue(of(hourlyForecastMock));
+        hourlyForecastService = jasmine.createSpyObj(['getHourlyForecastByCityName']);
+        hourlyForecastService.getHourlyForecastByCityName.and.returnValue(of(hourlyForecastMock));
 
         await TestBed.configureTestingModule({
             declarations: [HourlyForecastComponent],
             schemas: [CUSTOM_ELEMENTS_SCHEMA],
             providers: [
                 {provide: ActivatedRoute, useValue: mockActivatedRoute},
-                {provide: WeatherService, useValue: mockWeatherService},
+                {provide: HourlyForecastService, useValue: hourlyForecastService},
             ]
         })
             .compileComponents();
@@ -45,7 +45,7 @@ describe('HourlyForecastComponent', () => {
     it('should get hourly forecast of a city based on the coordination on component construction', () => {
         const expectedCoordination: ICoordination = {lat: 12, lon: 13};
 
-        expect(mockWeatherService.getHourlyForecastByCityName).toHaveBeenCalledWith(expectedCoordination);
+        expect(hourlyForecastService.getHourlyForecastByCityName).toHaveBeenCalledWith(expectedCoordination);
     });
 
     it('should get city name based on timezone', () => {

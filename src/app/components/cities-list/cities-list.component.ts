@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {ICurrentWeather} from '../../../interfaces/ICurrentWeather';
-import {WeatherService} from '../../../services/weather/weather.service';
+import {CurrentWeatherService} from '../../../services/current-weather/current-weather.service';
 import {Router} from '@angular/router';
 import {WeatherDetailHelperService} from '../../helpers/weather-detail/weather-detail-helper.service';
 import {ICoordination} from '../../../interfaces/ICoordination';
@@ -13,14 +13,14 @@ import {ICoordination} from '../../../interfaces/ICoordination';
 export class CitiesListComponent {
     public citiesWeather: ICurrentWeather[] = [];
 
-    constructor(public weatherService: WeatherService,
+    constructor(public currentWeatherService: CurrentWeatherService,
                 public weatherDetailHelper: WeatherDetailHelperService,
                 private router: Router) {
         this.getCitiesWeatherData();
     }
 
     private getCitiesWeatherData(): void {
-        this.weatherService.getCurrentWeather()
+        this.currentWeatherService.getCurrentWeather()
             .subscribe((weathers: ICurrentWeather[]) => this.citiesWeather = weathers);
     }
 

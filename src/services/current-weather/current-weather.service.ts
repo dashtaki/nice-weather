@@ -2,13 +2,11 @@ import {Injectable} from '@angular/core';
 import {TransportService} from '../transport.service';
 import {combineLatest, Observable} from 'rxjs';
 import {ICurrentWeather} from '../../interfaces/ICurrentWeather';
-import {IHourlyForecast} from '../../interfaces/IHourlyForecast';
-import {ICoordination} from '../../interfaces/ICoordination';
 
 @Injectable({
     providedIn: 'root'
 })
-export class WeatherService {
+export class CurrentWeatherService {
     constructor(private transportService: TransportService) {
     }
 
@@ -18,7 +16,7 @@ export class WeatherService {
      * @returns string[]
      */
     get cities(): string[] {
-        return ['tehran', 'tallinn', 'amsterdam', 'berlin', 'paris'];
+        return ['brussels', 'tallinn', 'amsterdam', 'berlin', 'paris'];
     }
 
     /**
@@ -39,22 +37,5 @@ export class WeatherService {
         });
 
         return combineLatest(citiesData$);
-    }
-
-    /**
-     * Get hourly forecast based on a city name
-     * Unit is `metric`:
-     *          wind speed is `meter/sec`
-     *          temperature is `Celsius`
-     * @see [Hourly Forecast](https://openweathermap.org/api/hourly-forecast)
-     *
-     * @param coordination: ICoordination;
-     *
-     * @returns Observable<IHourlyForecast>
-     */
-    public getHourlyForecastByCityName(coordination: ICoordination): Observable<IHourlyForecast> {
-        const {lat, lon} = coordination;
-        const url: string = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=current,minutely,daily`;
-        return this.transportService.Read(url);
     }
 }

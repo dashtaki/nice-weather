@@ -1,7 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CitiesListComponent} from './cities-list.component';
 import {By} from '@angular/platform-browser';
-import {WeatherService} from '../../../services/weather/weather.service';
+import {CurrentWeatherService} from '../../../services/current-weather/current-weather.service';
 import {of} from 'rxjs';
 import {mockCurrentWeathers} from '../../../mock-data/current-weather-mock';
 import {DebugElement} from '@angular/core';
@@ -12,19 +12,19 @@ import {ICoordination} from '../../../interfaces/ICoordination';
 describe('CitiesListComponent', () => {
     let component: CitiesListComponent;
     let fixture: ComponentFixture<CitiesListComponent>;
-    let mockWeatherService;
+    let currentWeatherService;
     let mockRouter;
 
     beforeEach(async () => {
-        mockWeatherService = jasmine.createSpyObj(['getCurrentWeather']);
-        mockWeatherService.getCurrentWeather.and.returnValue(of(mockCurrentWeathers));
+        currentWeatherService = jasmine.createSpyObj(['getCurrentWeather']);
+        currentWeatherService.getCurrentWeather.and.returnValue(of(mockCurrentWeathers));
         mockRouter = jasmine.createSpyObj(['navigate']);
 
         await TestBed.configureTestingModule({
             declarations: [CitiesListComponent],
             imports: [RouterTestingModule],
             providers: [
-                {provide: WeatherService, useValue: mockWeatherService},
+                {provide: CurrentWeatherService, useValue: currentWeatherService},
                 {provide: Router, useValue: mockRouter},
             ]
         })

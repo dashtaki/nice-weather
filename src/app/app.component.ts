@@ -17,3 +17,4 @@ export class AppComponent {
 // TODO: handle undefined coordination
 // TODO: rename hourly-weather to  forecast
 // TODO: think about ng-containers
+// TODO: split weeather service to tow services

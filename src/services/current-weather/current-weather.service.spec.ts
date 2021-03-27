@@ -1,9 +1,9 @@
 import {TestBed} from '@angular/core/testing';
-import {WeatherService} from './weather.service';
+import {CurrentWeatherService} from './current-weather.service';
 import {TransportService} from '../transport.service';
 
-describe('WeatherService', () => {
-    let service: WeatherService;
+describe('CurrentWeatherService', () => {
+    let service: CurrentWeatherService;
     let mockTransportService;
 
     beforeEach(() => {
@@ -12,7 +12,7 @@ describe('WeatherService', () => {
         TestBed.configureTestingModule({
             providers: [{provide: TransportService, useValue: mockTransportService}]
         });
-        service = TestBed.inject(WeatherService);
+        service = TestBed.inject(CurrentWeatherService);
     });
 
     it('should be created', () => {
@@ -20,7 +20,7 @@ describe('WeatherService', () => {
     });
 
     it('should get all cities name', () => {
-        const expectedCities: string[] = ['tehran', 'tallinn', 'amsterdam', 'berlin', 'paris'];
+        const expectedCities: string[] = ['brussels', 'tallinn', 'amsterdam', 'berlin', 'paris'];
         const actualCities = service.cities;
 
         expect(actualCities).toEqual(expectedCities);
