@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {IHourlyForecast} from '../../../interfaces/IHourlyForecast';
-import {WeatherDetailHelperService} from '../../helpers/weather-detail/weather-detail-helper.service';
+import {WeatherDetailHelperService} from '../../../helpers/weather-detail/weather-detail-helper.service';
 import {ICoordination} from '../../../interfaces/ICoordination';
 import {faChevronLeft} from '@fortawesome/free-solid-svg-icons';
 import {HourlyForecastService} from '../../../services/hourly-forecast/hourly-forecast.service';

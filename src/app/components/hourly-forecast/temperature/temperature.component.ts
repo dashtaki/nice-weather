@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {WeatherDetailHelperService} from '../../../helpers/weather-detail/weather-detail-helper.service';
+import {WeatherDetailHelperService} from '../../../../helpers/weather-detail/weather-detail-helper.service';
 
 @Component({
     selector: 'app-temperature',

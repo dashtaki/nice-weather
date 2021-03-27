@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {ICurrentWeather} from '../../../interfaces/ICurrentWeather';
 import {CurrentWeatherService} from '../../../services/current-weather/current-weather.service';
 import {Router} from '@angular/router';
-import {WeatherDetailHelperService} from '../../helpers/weather-detail/weather-detail-helper.service';
+import {WeatherDetailHelperService} from '../../../helpers/weather-detail/weather-detail-helper.service';
 import {ICoordination} from '../../../interfaces/ICoordination';
 
 @Component({
