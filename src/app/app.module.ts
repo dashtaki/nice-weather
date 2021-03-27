@@ -7,25 +7,12 @@ import {HttpClientModule} from '@angular/common/http';
 import {HourlyWeatherComponent} from './components/hourly-weather/hourly-weather.component';
 import {AppRoutingModule} from './app-routing.module';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
-import {HumidityComponent} from './components/hourly-weather/humidity/humidity.component';
-import {IconComponent} from './components/hourly-weather/icon/icon.component';
-import {WindComponent} from './components/hourly-weather/wind/wind.component';
-import {UvIndexComponent} from './components/hourly-weather/uv-index/uv-index.component';
-import {FeelsLikeComponent} from './components/hourly-weather/feels-like/feels-like.component';
-import {TemperatureComponent} from './components/hourly-weather/temperature/temperature.component';
-import { TimeComponent } from './components/hourly-weather/time/time.component';
+import {HourlyForecastModule} from './components/hourly-weather/hourly-forecast.module';
 
-// TODO: component should move to module
 const DECLARATIONS: any[] = [
     AppComponent,
     CitiesListComponent,
     HourlyWeatherComponent,
-    HumidityComponent,
-    IconComponent,
-    WindComponent,
-    UvIndexComponent,
-    FeelsLikeComponent,
-    TemperatureComponent
 ];
 
 const MODULES: any[] = [
@@ -33,11 +20,12 @@ const MODULES: any[] = [
     CommonModule,
     HttpClientModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    HourlyForecastModule
 ];
 
 @NgModule({
-    declarations: [...DECLARATIONS, TimeComponent],
+    declarations: [...DECLARATIONS],
     imports: [...MODULES],
     providers: [],
     bootstrap: [AppComponent]

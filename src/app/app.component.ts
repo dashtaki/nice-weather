@@ -15,3 +15,4 @@ export class AppComponent {
 // TODO: create moduel for forcaste
 // TODO: supprt alert in forecast
 // TODO: handle undefined coordination
+// TODO: rename hourly-weather to  forecast

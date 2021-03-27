@@ -1,8 +1,6 @@
 import {NgModule} from '@angular/core';
 import {Route, RouterModule} from '@angular/router';
 import {CitiesListComponent} from './components/cities-list/cities-list.component';
-import {HourlyWeatherComponent} from './components/hourly-weather/hourly-weather.component';
-
 
 const routes: Route[] = [
     {
@@ -16,7 +14,8 @@ const routes: Route[] = [
     },
     {
         path: 'hourly',
-        component: HourlyWeatherComponent
+        loadChildren: () => import('./components/hourly-weather/hourly-forecast.module')
+            .then((hourlyForecast) => hourlyForecast.HourlyForecastModule)
     }
 ];
 
