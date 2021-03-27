@@ -1,7 +1,7 @@
 import {IHourData} from './IHourData';
 
 export interface IHourlyForecast {
-    alerts: IAlert[];
+    alerts?: IAlert[];
     hourly: IHourData[];
     lat: number;
     lon: number;

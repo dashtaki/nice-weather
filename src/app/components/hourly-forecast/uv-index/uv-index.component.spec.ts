@@ -25,7 +25,7 @@ describe('UvIndexComponent', () => {
         expect(component).toBeTruthy();
     });
 
-    it('should show feels kile icon', () => {
+    it('should show UV index icon', () => {
         const icon: DebugElement = fixture.debugElement.query(By.css('fa-icon'));
 
         expect(icon.nativeElement.icon.iconName).toEqual('umbrella-beach');

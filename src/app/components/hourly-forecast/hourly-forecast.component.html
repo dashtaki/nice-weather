@@ -5,12 +5,12 @@
                 <h3 class="font-weight-bold">Hourly Forecast - </h3>
                 <h5 class="ml-3 mb-0">{{getCityNameFromTimeZone(hourlyForecast?.timezone)}}</h5>
             </div>
-            <div>{{hourlyForecast?.hourly[0].dt * 1000| date : 'EEEE, MMMM d'}}</div>
+            <div class="forecast__date">{{hourlyForecast?.hourly[0].dt * 1000| date : 'EEEE, MMMM d'}}</div>
         </div>
 
-        <button class="back-button" routerLink="/current">
+        <a class="back-button" routerLink="/current">
             <fa-icon [icon]="faChevronLeft"></fa-icon>
-        </button>
+        </a>
     </div>
 
     <app-hour-detail [hourDetail]="hourlyForecast.hourly"></app-hour-detail>

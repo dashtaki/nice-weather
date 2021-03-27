@@ -3,7 +3,7 @@ import {IWeather} from './IWeather';
 export interface IHourData {
     clouds: number;
     dew_point: number;
-    dt: null;
+    dt: number;
     feels_like: number;
     humidity: number;
     pop: number;

@@ -3,7 +3,7 @@ import {CitiesListComponent} from './cities-list.component';
 import {By} from '@angular/platform-browser';
 import {WeatherService} from '../../../services/weather/weather.service';
 import {of} from 'rxjs';
-import {mockCurrentWeathers} from '../../../mock-data/current-weather';
+import {mockCurrentWeathers} from '../../../mock-data/current-weather-mock';
 import {DebugElement} from '@angular/core';
 import {RouterTestingModule} from '@angular/router/testing';
 import {Router} from '@angular/router';

@@ -25,7 +25,7 @@ describe('WindComponent', () => {
         expect(component).toBeTruthy();
     });
 
-    it('should show feels kile icon', () => {
+    it('should show wind icon', () => {
         const icon: DebugElement = fixture.debugElement.query(By.css('fa-icon'));
 
         expect(icon.nativeElement.icon.iconName).toEqual('wind');
