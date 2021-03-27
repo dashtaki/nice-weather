@@ -18,3 +18,4 @@ export class AppComponent {
 // TODO: handle undefined coordination
 // TODO: think about ng-containers
 // TODO: lint
+// TODO: test for interceptor

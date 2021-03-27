@@ -34,9 +34,10 @@ export class HourlyForecastComponent {
         this.spinnerService.loading = true;
         this.hourlyForecastService.getHourlyForecastByCityName(coordination)
             .subscribe((hourlyForecast: IHourlyForecast) => {
-                this.hourlyForecast = hourlyForecast;
-                this.spinnerService.loading = false;
-            });
+                    this.hourlyForecast = hourlyForecast;
+                    this.spinnerService.loading = false;
+                },
+                _ => this.spinnerService.loading = false);
     }
 
     public getCityNameFromTimeZone(timeZone: string): string {

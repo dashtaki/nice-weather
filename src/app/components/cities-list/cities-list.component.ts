@@ -22,9 +22,10 @@ export class CitiesListComponent {
         this.citiesListFacadeService.currentWeatherService
             .getCurrentWeather()
             .subscribe((weathers: ICurrentWeather[]) => {
-                this.citiesWeather = weathers;
-                this.citiesListFacadeService.spinnerService.loading = false;
-            });
+                    this.citiesWeather = weathers;
+                    this.citiesListFacadeService.spinnerService.loading = false;
+                },
+                _ => this.citiesListFacadeService.spinnerService.loading = false);
     }
 
     public showHourlyForecast(coordination: ICoordination): void {
