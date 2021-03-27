@@ -1,14 +1,14 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {CitiesListComponent} from './cities-list.component';
-import {By} from '@angular/platform-browser';
-import {CurrentWeatherService} from '../../../services/current-weather/current-weather.service';
-import {of} from 'rxjs';
-import {mockCurrentWeathers} from '../../../mock-data/current-weather-mock';
-import {DebugElement} from '@angular/core';
-import {RouterTestingModule} from '@angular/router/testing';
-import {Router} from '@angular/router';
-import {ICoordination} from '../../../interfaces/ICoordination';
-import {SpinnerService} from '../../../services/spinner/spinner.service';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { CitiesListComponent } from './cities-list.component';
+import { By } from '@angular/platform-browser';
+import { CurrentWeatherService } from '../../../services/current-weather/current-weather.service';
+import { of } from 'rxjs';
+import { mockCurrentWeathers } from '../../../mock-data/current-weather-mock';
+import { DebugElement } from '@angular/core';
+import { RouterTestingModule } from '@angular/router/testing';
+import { Router } from '@angular/router';
+import { ICoordination } from '../../../interfaces/ICoordination';
+import { SpinnerService } from '../../../services/spinner/spinner.service';
 
 describe('CitiesListComponent', () => {
     let component: CitiesListComponent;
@@ -19,7 +19,9 @@ describe('CitiesListComponent', () => {
 
     beforeEach(async () => {
         mockCurrentWeatherService = jasmine.createSpyObj(['getCurrentWeather']);
-        mockCurrentWeatherService.getCurrentWeather.and.returnValue(of(mockCurrentWeathers));
+        mockCurrentWeatherService.getCurrentWeather.and.returnValue(
+            of(mockCurrentWeathers)
+        );
         mockRouter = jasmine.createSpyObj(['navigate']);
 
         mockSpinnerService = jasmine.createSpyObj(['loading']);
@@ -28,12 +30,14 @@ describe('CitiesListComponent', () => {
             declarations: [CitiesListComponent],
             imports: [RouterTestingModule],
             providers: [
-                {provide: CurrentWeatherService, useValue: mockCurrentWeatherService},
-                {provide: SpinnerService, useValue: mockSpinnerService},
-                {provide: Router, useValue: mockRouter},
-            ]
-        })
-            .compileComponents();
+                {
+                    provide: CurrentWeatherService,
+                    useValue: mockCurrentWeatherService,
+                },
+                { provide: SpinnerService, useValue: mockSpinnerService },
+                { provide: Router, useValue: mockRouter },
+            ],
+        }).compileComponents();
     });
 
     beforeEach(() => {
@@ -47,69 +51,99 @@ describe('CitiesListComponent', () => {
     });
 
     it('should get current weathers', () => {
-
         expect(mockCurrentWeatherService.getCurrentWeather).toHaveBeenCalled();
     });
 
     it('should show list of cities', () => {
-        const mainWrapper: DebugElement[] = fixture.debugElement.queryAll(By.css('.current-weather__wrapper ul li'));
+        const mainWrapper: DebugElement[] = fixture.debugElement.queryAll(
+            By.css('.current-weather__wrapper ul li')
+        );
 
         expect(mainWrapper.length).toBe(2);
     });
 
     it('should show city name', () => {
-        const cityName: DebugElement = fixture.debugElement.query(By.css('.current-weather__city-name'));
+        const cityName: DebugElement = fixture.debugElement.query(
+            By.css('.current-weather__city-name')
+        );
 
         expect(cityName.nativeElement.textContent).toEqual('London');
     });
 
     it('should show weather icon', () => {
-        const weatherIcon: DebugElement = fixture.debugElement.query(By.css('.current-weather__icon'));
+        const weatherIcon: DebugElement = fixture.debugElement.query(
+            By.css('.current-weather__icon')
+        );
 
-        expect(weatherIcon.nativeElement.src).toEqual('http://openweathermap.org/img/wn/04n@4x.png');
+        expect(weatherIcon.nativeElement.src).toEqual(
+            'http://openweathermap.org/img/wn/04n@4x.png'
+        );
     });
 
     it('should show weather Temperature', () => {
-        const weatherTemp: DebugElement = fixture.debugElement.query(By.css('.current-weather__temp'));
+        const weatherTemp: DebugElement = fixture.debugElement.query(
+            By.css('.current-weather__temp')
+        );
 
         expect(weatherTemp.nativeElement.textContent).toContain('10 °C');
     });
 
     it('should show weather date and time', () => {
-        const weatherDate: DebugElement = fixture.debugElement.query(By.css('.current-weather__time'));
+        const weatherDate: DebugElement = fixture.debugElement.query(
+            By.css('.current-weather__time')
+        );
 
-        expect(weatherDate.nativeElement.textContent).toEqual('Mar 26, 2021, 12:36:25 AM');
+        expect(weatherDate.nativeElement.textContent).toEqual(
+            'Mar 26, 2021, 12:36:25 AM'
+        );
     });
 
     it('should show weather status', () => {
-        const weatherStatus: DebugElement = fixture.debugElement.query(By.css('p'));
+        const weatherStatus: DebugElement = fixture.debugElement.query(
+            By.css('p')
+        );
 
         expect(weatherStatus.nativeElement.textContent).toContain('Clouds');
     });
 
     it('should show wind description', () => {
-        const weatherDescription: DebugElement = fixture.debugElement.query(By.css('p'));
+        const weatherDescription: DebugElement = fixture.debugElement.query(
+            By.css('p')
+        );
 
-        expect(weatherDescription.nativeElement.textContent).toContain('broken clouds');
+        expect(weatherDescription.nativeElement.textContent).toContain(
+            'broken clouds'
+        );
     });
 
     it('should show wind speed', () => {
-        const windSpeed: DebugElement = fixture.debugElement.query(By.css('p:last-child'));
+        const windSpeed: DebugElement = fixture.debugElement.query(
+            By.css('p:last-child')
+        );
 
         expect(windSpeed.nativeElement.textContent).toContain('Wind: 4.63 m/s');
     });
 
     it('should show wind degree', () => {
-        const windDegree: DebugElement = fixture.debugElement.query(By.css('p:last-child'));
+        const windDegree: DebugElement = fixture.debugElement.query(
+            By.css('p:last-child')
+        );
 
         expect(windDegree.nativeElement.textContent).toContain('210');
     });
 
     it('should go to weather detail on click', () => {
-        const expectedCoordination: ICoordination = {lon: -0.1257, lat: 51.5085};
-        const currentWeather: DebugElement = fixture.debugElement.query(By.css('.current-weather__wrapper ul li:first-child'));
+        const expectedCoordination: ICoordination = {
+            lon: -0.1257,
+            lat: 51.5085,
+        };
+        const currentWeather: DebugElement = fixture.debugElement.query(
+            By.css('.current-weather__wrapper ul li:first-child')
+        );
         currentWeather.triggerEventHandler('click', null);
 
-        expect(mockRouter.navigate).toHaveBeenCalledWith(['/hourly'], {queryParams: expectedCoordination});
+        expect(mockRouter.navigate).toHaveBeenCalledWith(['/hourly'], {
+            queryParams: expectedCoordination,
+        });
     });
 });

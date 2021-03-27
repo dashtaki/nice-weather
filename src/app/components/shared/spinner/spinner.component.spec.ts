@@ -1,7 +1,7 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {SpinnerComponent} from './spinner.component';
-import {DebugElement} from '@angular/core';
-import {By} from '@angular/platform-browser';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { SpinnerComponent } from './spinner.component';
+import { DebugElement } from '@angular/core';
+import { By } from '@angular/platform-browser';
 
 describe('SpinnerComponent', () => {
     let component: SpinnerComponent;
@@ -9,9 +9,8 @@ describe('SpinnerComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [SpinnerComponent]
-        })
-            .compileComponents();
+            declarations: [SpinnerComponent],
+        }).compileComponents();
     });
 
     beforeEach(() => {
@@ -25,7 +24,9 @@ describe('SpinnerComponent', () => {
     });
 
     it('should spinner', () => {
-        const spinner: DebugElement = fixture.debugElement.query(By.css('#global-spinner'));
+        const spinner: DebugElement = fixture.debugElement.query(
+            By.css('#global-spinner')
+        );
 
         expect(spinner).toBeTruthy();
     });

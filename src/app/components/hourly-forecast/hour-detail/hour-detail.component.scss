@@ -1,24 +1,24 @@
-@import "src/assets/styles/mixin";
+@import 'src/assets/styles/mixin';
 
 .row {
-  padding: {
-    right: 1.5rem;
-    left: 1.5rem;
-    top: 0.5rem;
-    bottom: 0.5rem;
-  }
-  position: relative;
-  margin: 1rem 0;
-  background: white;
-  border: 0.063rem solid #c41e02;
+    padding: {
+        right: 1.5rem;
+        left: 1.5rem;
+        top: 0.5rem;
+        bottom: 0.5rem;
+    }
+    position: relative;
+    margin: 1rem 0;
+    background: white;
+    border: 0.063rem solid #c41e02;
 
-  &:before {
-    @include box-gradiant(2deg, 0.5deg);
-  }
+    &:before {
+        @include box-gradiant(2deg, 0.5deg);
+    }
 
-  .col {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+    .col {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }

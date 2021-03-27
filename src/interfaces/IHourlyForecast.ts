@@ -1,4 +1,4 @@
-import {IHourData} from './IHourData';
+import { IHourData } from './IHourData';
 
 export interface IHourlyForecast {
     alerts?: IAlert[];

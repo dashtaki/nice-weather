@@ -1,4 +1,4 @@
-import {IHourlyForecast} from '../interfaces/IHourlyForecast';
+import { IHourlyForecast } from '../interfaces/IHourlyForecast';
 
 export const hourlyForecastMock: IHourlyForecast = {
     hourly: [
@@ -19,12 +19,12 @@ export const hourlyForecastMock: IHourlyForecast = {
                     main: 'Cloud',
                     description: 'sky',
                     icon: '',
-                }
+                },
             ],
             wind_deg: 25,
             wind_gust: 12,
             wind_speed: 78,
-        }
+        },
     ],
     lat: 48.8534,
     lon: 2.3488,

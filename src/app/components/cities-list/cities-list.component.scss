@@ -1,74 +1,73 @@
 @import 'src/assets/styles/mixin';
 
 .current-weather__card {
-  padding: 0;
-  margin: 3.125rem auto;
-  list-style: none;
-  text-align: center;
-  width: 100%;
-  z-index: 0;
+    padding: 0;
+    margin: 3.125rem auto;
+    list-style: none;
+    text-align: center;
+    width: 100%;
+    z-index: 0;
 }
 
 .current-weather__card li {
-  display: inline-block;
-  width: 20%;
-  min-width: 15rem;
-  max-width: 14.375rem;
-  padding: {
-    top: 5rem;
-    right: 1.5rem;
-    bottom: 1rem;
-    left: 1.5rem;
-  }
-  position: relative;
-  vertical-align: top;
-  margin: 2rem;
-  min-height: 25vh;
-  background: white;
-  border: 0.063rem solid #252727;
-  text-align: left;
-  cursor: pointer;
+    display: inline-block;
+    width: 20%;
+    min-width: 15rem;
+    max-width: 14.375rem;
+    padding: {
+        top: 5rem;
+        right: 1.5rem;
+        bottom: 1rem;
+        left: 1.5rem;
+    }
+    position: relative;
+    vertical-align: top;
+    margin: 2rem;
+    min-height: 25vh;
+    background: white;
+    border: 0.063rem solid #252727;
+    text-align: left;
+    cursor: pointer;
 
-  &:before {
-    @include box-gradiant(2deg, 2deg);
-  }
+    &:before {
+        @include box-gradiant(2deg, 2deg);
+    }
 
-  &:hover h2 {
-    top: 0.625rem;
-    opacity: 0.6;
-  }
+    &:hover h2 {
+        top: 0.625rem;
+        opacity: 0.6;
+    }
 
-  p {
-    font-size: 1rem;
-    line-height: 1.125rem;
-    color: #b7b7b7;
-    margin-top: 0.313rem;
-  }
+    p {
+        font-size: 1rem;
+        line-height: 1.125rem;
+        color: #b7b7b7;
+        margin-top: 0.313rem;
+    }
 }
 
 .current-weather__city-name {
-  font-size: 2rem;
-  font-weight: 600;
-  margin: 0;
-  position: absolute;
-  opacity: 0.3;
-  top: 1.875rem;
-  color: black;
-  transition: all 0.3s ease-in-out;
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0;
+    position: absolute;
+    opacity: 0.3;
+    top: 1.875rem;
+    color: black;
+    transition: all 0.3s ease-in-out;
 }
 
 .current-weather__icon {
-  width: 10rem;
-  transform: translateX(-50%);
-  margin-left: 50%;
+    width: 10rem;
+    transform: translateX(-50%);
+    margin-left: 50%;
 }
 
 .current-weather__temp {
-  color: #423d3d;
-  margin-bottom: 0;
+    color: #423d3d;
+    margin-bottom: 0;
 }
 
 .current-weather__time {
-  color: #b74b3c;
+    color: #b74b3c;
 }
-

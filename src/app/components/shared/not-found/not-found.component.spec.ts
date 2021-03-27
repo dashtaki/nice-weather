@@ -1,7 +1,7 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {NotFoundComponent} from './not-found.component';
-import {CUSTOM_ELEMENTS_SCHEMA, DebugElement} from '@angular/core';
-import {By} from '@angular/platform-browser';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NotFoundComponent } from './not-found.component';
+import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
+import { By } from '@angular/platform-browser';
 
 describe('NotFoundComponent', () => {
     let component: NotFoundComponent;
@@ -11,8 +11,7 @@ describe('NotFoundComponent', () => {
         await TestBed.configureTestingModule({
             declarations: [NotFoundComponent],
             schemas: [CUSTOM_ELEMENTS_SCHEMA],
-        })
-            .compileComponents();
+        }).compileComponents();
     });
 
     beforeEach(() => {
@@ -28,24 +27,36 @@ describe('NotFoundComponent', () => {
     it('should not found title', () => {
         const title: DebugElement = fixture.debugElement.query(By.css('h2'));
 
-        expect(title.nativeElement.textContent).toContain('Oops! The city not found!');
+        expect(title.nativeElement.textContent).toContain(
+            'Oops! The city not found!'
+        );
     });
 
     it('should show warning icon', () => {
-        const icon: DebugElement = fixture.debugElement.query(By.css('fa-icon'));
+        const icon: DebugElement = fixture.debugElement.query(
+            By.css('fa-icon')
+        );
 
-        expect(icon.nativeElement.icon.iconName).toEqual('exclamation-triangle');
+        expect(icon.nativeElement.icon.iconName).toEqual(
+            'exclamation-triangle'
+        );
     });
 
     it('should link text', () => {
-        const linkTitle: DebugElement = fixture.debugElement.query(By.css('h5'));
+        const linkTitle: DebugElement = fixture.debugElement.query(
+            By.css('h5')
+        );
 
-        expect(linkTitle.nativeElement.textContent).toContain('See cities list here!');
+        expect(linkTitle.nativeElement.textContent).toContain(
+            'See cities list here!'
+        );
     });
 
     it('should route to current on here on click', () => {
         const link: DebugElement = fixture.debugElement.query(By.css('a'));
 
-        expect(link.nativeElement.getAttribute('routerLink')).toEqual('/current');
+        expect(link.nativeElement.getAttribute('routerLink')).toEqual(
+            '/current'
+        );
     });
 });

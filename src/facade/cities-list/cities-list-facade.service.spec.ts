@@ -1,5 +1,5 @@
-import {TestBed} from '@angular/core/testing';
-import {CitiesListFacadeService} from './cities-list-facade.service';
+import { TestBed } from '@angular/core/testing';
+import { CitiesListFacadeService } from './cities-list-facade.service';
 
 describe('CitiesListFacadeService', () => {
     let service: CitiesListFacadeService;
@@ -14,7 +14,10 @@ describe('CitiesListFacadeService', () => {
     });
 
     it('#CurrentWeatherService', () => {
-        const spy: jasmine.Spy = spyOn<any>(service, 'currentWeatherServiceProxy');
+        const spy: jasmine.Spy = spyOn<any>(
+            service,
+            'currentWeatherServiceProxy'
+        );
         // tslint:disable-next-line:no-unused-expression
         service.currentWeatherService;
 
@@ -22,7 +25,10 @@ describe('CitiesListFacadeService', () => {
     });
 
     it('#WeatherDetailHelperService', () => {
-        const spy: jasmine.Spy = spyOn<any>(service, 'weatherDetailHelperProxy');
+        const spy: jasmine.Spy = spyOn<any>(
+            service,
+            'weatherDetailHelperProxy'
+        );
         // tslint:disable-next-line:no-unused-expression
         service.weatherDetailHelper;
 

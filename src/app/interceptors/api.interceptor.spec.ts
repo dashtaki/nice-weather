@@ -1,10 +1,14 @@
-import {fakeAsync, TestBed} from '@angular/core/testing';
-import {ApiInterceptor} from './api.interceptor';
-import {Router} from '@angular/router';
-import {HTTP_INTERCEPTORS} from '@angular/common/http';
-import {HttpClientTestingModule, HttpTestingController, TestRequest} from '@angular/common/http/testing';
-import {TransportService} from '../../services/transport.service';
-import {API_KEY} from '../../constants/ApiConstants';
+import { fakeAsync, TestBed } from '@angular/core/testing';
+import { ApiInterceptor } from './api.interceptor';
+import { Router } from '@angular/router';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import {
+    HttpClientTestingModule,
+    HttpTestingController,
+    TestRequest,
+} from '@angular/common/http/testing';
+import { TransportService } from '../../services/transport.service';
+import { API_KEY } from '../../constants/ApiConstants';
 
 describe('ApiInterceptor', () => {
     let mockRouter;
@@ -13,7 +17,7 @@ describe('ApiInterceptor', () => {
     let transportService: TransportService;
 
     function produceApiError(status: number): void {
-        const mockErrorResponse: any = {status, statusText: 'Bad Request'};
+        const mockErrorResponse: any = { status, statusText: 'Bad Request' };
         const data: string = 'Invalid';
         transportService.Read('sad').subscribe();
         const expectedQuery: string = `sad&appid=${API_KEY}`;
@@ -34,8 +38,8 @@ describe('ApiInterceptor', () => {
                     multi: true,
                 },
                 ApiInterceptor,
-                {provide: Router, useValue: mockRouter}
-            ]
+                { provide: Router, useValue: mockRouter },
+            ],
         });
 
         httpMock = TestBed.inject(HttpTestingController);

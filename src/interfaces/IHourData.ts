@@ -1,4 +1,4 @@
-import {IWeather} from './IWeather';
+import { IWeather } from './IWeather';
 
 export interface IHourData {
     clouds: number;

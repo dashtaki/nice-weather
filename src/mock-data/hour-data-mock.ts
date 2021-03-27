@@ -1,4 +1,4 @@
-import {IHourData} from '../interfaces/IHourData';
+import { IHourData } from '../interfaces/IHourData';
 
 export const mockHourData: IHourData[] = [
     {
@@ -12,7 +12,14 @@ export const mockHourData: IHourData[] = [
         temp: 12.13,
         uvi: 1.84,
         visibility: 10000,
-        weather: [{id: 803, main: 'Clouds', description: 'broken clouds', icon: '04d'}],
+        weather: [
+            {
+                id: 803,
+                main: 'Clouds',
+                description: 'broken clouds',
+                icon: '04d',
+            },
+        ],
         wind_deg: 268,
         wind_gust: 7.56,
         wind_speed: 4.84,
@@ -28,9 +35,16 @@ export const mockHourData: IHourData[] = [
         temp: 10.71,
         uvi: 0,
         visibility: 10000,
-        weather: [{id: 804, main: 'Clouds', description: 'overcast clouds', icon: '04d'}],
+        weather: [
+            {
+                id: 804,
+                main: 'Clouds',
+                description: 'overcast clouds',
+                icon: '04d',
+            },
+        ],
         wind_deg: 242,
         wind_gust: 5.77,
         wind_speed: 3.02,
-    }
+    },
 ];

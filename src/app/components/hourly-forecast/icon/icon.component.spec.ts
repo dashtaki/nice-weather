@@ -1,7 +1,7 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {IconComponent} from './icon.component';
-import {DebugElement} from '@angular/core';
-import {By} from '@angular/platform-browser';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { IconComponent } from './icon.component';
+import { DebugElement } from '@angular/core';
+import { By } from '@angular/platform-browser';
 
 describe('IconComponent', () => {
     let component: IconComponent;
@@ -9,9 +9,8 @@ describe('IconComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [IconComponent]
-        })
-            .compileComponents();
+            declarations: [IconComponent],
+        }).compileComponents();
     });
 
     beforeEach(() => {
@@ -29,14 +28,20 @@ describe('IconComponent', () => {
         fixture.detectChanges();
         const icon: DebugElement = fixture.debugElement.query(By.css('img'));
 
-        expect(icon.nativeElement.src).toEqual('http://openweathermap.org/img/wn/04d@4x.png');
+        expect(icon.nativeElement.src).toEqual(
+            'http://openweathermap.org/img/wn/04d@4x.png'
+        );
     });
 
     it('should show weather main title', () => {
         component.weatherText = 'mock-weather-title';
         fixture.detectChanges();
-        const weatherTitle: DebugElement = fixture.debugElement.query(By.css('span'));
+        const weatherTitle: DebugElement = fixture.debugElement.query(
+            By.css('span')
+        );
 
-        expect(weatherTitle.nativeElement.textContent).toContain('mock-weather-title');
+        expect(weatherTitle.nativeElement.textContent).toContain(
+            'mock-weather-title'
+        );
     });
 });

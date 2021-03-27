@@ -1,8 +1,8 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {AppComponent} from './app.component';
-import {CUSTOM_ELEMENTS_SCHEMA, DebugElement} from '@angular/core';
-import {SpinnerService} from '../services/spinner/spinner.service';
-import {By} from '@angular/platform-browser';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AppComponent } from './app.component';
+import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
+import { SpinnerService } from '../services/spinner/spinner.service';
+import { By } from '@angular/platform-browser';
 
 describe('AppComponent', () => {
     let component: AppComponent;
@@ -15,7 +15,9 @@ describe('AppComponent', () => {
         await TestBed.configureTestingModule({
             declarations: [AppComponent],
             schemas: [CUSTOM_ELEMENTS_SCHEMA],
-            providers: [{provide: SpinnerService, useValue: mockSpinnerService}]
+            providers: [
+                { provide: SpinnerService, useValue: mockSpinnerService },
+            ],
         }).compileComponents();
     });
 
@@ -32,7 +34,9 @@ describe('AppComponent', () => {
     it('should show spinner', () => {
         mockSpinnerService.loading = true;
         fixture.detectChanges();
-        const spinner: DebugElement = fixture.debugElement.query(By.css('app-spinner'));
+        const spinner: DebugElement = fixture.debugElement.query(
+            By.css('app-spinner')
+        );
 
         expect(spinner).toBeTruthy();
     });

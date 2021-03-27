@@ -1,14 +1,13 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {API_KEY} from '../constants/ApiConstants';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { API_KEY } from '../constants/ApiConstants';
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class TransportService {
-    constructor(private httpClient: HttpClient) {
-    }
+    constructor(private httpClient: HttpClient) {}
 
     /**
      * Get full url with appended API key

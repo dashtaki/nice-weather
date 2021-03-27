@@ -1,5 +1,5 @@
-import {TestBed} from '@angular/core/testing';
-import {SpinnerService} from './spinner.service';
+import { TestBed } from '@angular/core/testing';
+import { SpinnerService } from './spinner.service';
 
 describe('SpinnerService', () => {
     let service: SpinnerService;

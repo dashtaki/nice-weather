@@ -1,6 +1,6 @@
-import {TestBed} from '@angular/core/testing';
-import {CurrentWeatherService} from './current-weather.service';
-import {TransportService} from '../transport.service';
+import { TestBed } from '@angular/core/testing';
+import { CurrentWeatherService } from './current-weather.service';
+import { TransportService } from '../transport.service';
 
 describe('CurrentWeatherService', () => {
     let service: CurrentWeatherService;
@@ -10,7 +10,9 @@ describe('CurrentWeatherService', () => {
         mockTransportService = jasmine.createSpyObj(['Read']);
 
         TestBed.configureTestingModule({
-            providers: [{provide: TransportService, useValue: mockTransportService}]
+            providers: [
+                { provide: TransportService, useValue: mockTransportService },
+            ],
         });
         service = TestBed.inject(CurrentWeatherService);
     });
@@ -20,7 +22,13 @@ describe('CurrentWeatherService', () => {
     });
 
     it('should get all cities name', () => {
-        const expectedCities: string[] = ['brussels', 'tallinn', 'amsterdam', 'berlin', 'paris'];
+        const expectedCities: string[] = [
+            'brussels',
+            'tallinn',
+            'amsterdam',
+            'berlin',
+            'paris',
+        ];
         const actualCities = service.cities;
 
         expect(actualCities).toEqual(expectedCities);
@@ -30,8 +38,9 @@ describe('CurrentWeatherService', () => {
         service.getCurrentWeather();
 
         service.cities.forEach((city: string) => {
-            expect(mockTransportService.Read)
-                .toHaveBeenCalledWith(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric`);
+            expect(mockTransportService.Read).toHaveBeenCalledWith(
+                `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric`
+            );
         });
     });
 });

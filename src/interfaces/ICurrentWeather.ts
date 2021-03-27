@@ -1,5 +1,5 @@
-import {IWeather} from './IWeather';
-import {ICoordination} from './ICoordination';
+import { IWeather } from './IWeather';
+import { ICoordination } from './ICoordination';
 
 export interface ICurrentWeather {
     coord: ICoordination;

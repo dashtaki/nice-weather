@@ -1,7 +1,10 @@
-import {TestBed} from '@angular/core/testing';
-import {TransportService} from './transport.service';
-import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
-import {API_KEY} from '../constants/ApiConstants';
+import { TestBed } from '@angular/core/testing';
+import { TransportService } from './transport.service';
+import {
+    HttpClientTestingModule,
+    HttpTestingController,
+} from '@angular/common/http/testing';
+import { API_KEY } from '../constants/ApiConstants';
 
 describe('TransportService', () => {
     let service: TransportService;
@@ -9,7 +12,7 @@ describe('TransportService', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [HttpClientTestingModule]
+            imports: [HttpClientTestingModule],
         });
         service = TestBed.inject(TransportService);
         httpTestingController = TestBed.inject(HttpTestingController);

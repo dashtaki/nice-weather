@@ -1,10 +1,10 @@
-import {Injectable, Injector} from '@angular/core';
-import {CurrentWeatherService} from '../../services/current-weather/current-weather.service';
-import {WeatherDetailHelperService} from '../../helpers/weather-detail/weather-detail-helper.service';
-import {SpinnerService} from '../../services/spinner/spinner.service';
+import { Injectable, Injector } from '@angular/core';
+import { CurrentWeatherService } from '../../services/current-weather/current-weather.service';
+import { WeatherDetailHelperService } from '../../helpers/weather-detail/weather-detail-helper.service';
+import { SpinnerService } from '../../services/spinner/spinner.service';
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class CitiesListFacadeService {
     private _currentWeatherService: CurrentWeatherService;
@@ -18,7 +18,9 @@ export class CitiesListFacadeService {
 
     private currentWeatherServiceProxy(): void {
         if (!this._currentWeatherService) {
-            this._currentWeatherService = this.injector.get(CurrentWeatherService);
+            this._currentWeatherService = this.injector.get(
+                CurrentWeatherService
+            );
         }
     }
 
@@ -29,7 +31,9 @@ export class CitiesListFacadeService {
 
     private weatherDetailHelperProxy(): void {
         if (!this._weatherDetailHelper) {
-            this._weatherDetailHelper = this.injector.get(WeatherDetailHelperService);
+            this._weatherDetailHelper = this.injector.get(
+                WeatherDetailHelperService
+            );
         }
     }
 
@@ -44,6 +48,5 @@ export class CitiesListFacadeService {
         }
     }
 
-    constructor(private injector: Injector) {
-    }
+    constructor(private injector: Injector) {}
 }

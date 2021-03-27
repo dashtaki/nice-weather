@@ -1,14 +1,13 @@
-import {Injectable} from '@angular/core';
-import {TransportService} from '../transport.service';
-import {combineLatest, Observable} from 'rxjs';
-import {ICurrentWeather} from '../../interfaces/ICurrentWeather';
+import { Injectable } from '@angular/core';
+import { TransportService } from '../transport.service';
+import { combineLatest, Observable } from 'rxjs';
+import { ICurrentWeather } from '../../interfaces/ICurrentWeather';
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class CurrentWeatherService {
-    constructor(private transportService: TransportService) {
-    }
+    constructor(private transportService: TransportService) {}
 
     /**
      * Get list of cities name

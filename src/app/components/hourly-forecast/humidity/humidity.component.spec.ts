@@ -1,7 +1,7 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {HumidityComponent} from './humidity.component';
-import {CUSTOM_ELEMENTS_SCHEMA, DebugElement} from '@angular/core';
-import {By} from '@angular/platform-browser';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HumidityComponent } from './humidity.component';
+import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
+import { By } from '@angular/platform-browser';
 
 describe('HumidityComponent', () => {
     let component: HumidityComponent;
@@ -11,8 +11,7 @@ describe('HumidityComponent', () => {
         await TestBed.configureTestingModule({
             declarations: [HumidityComponent],
             schemas: [CUSTOM_ELEMENTS_SCHEMA],
-        })
-            .compileComponents();
+        }).compileComponents();
     });
 
     beforeEach(() => {
@@ -26,14 +25,18 @@ describe('HumidityComponent', () => {
     });
 
     it('should show humidity icon', () => {
-        const icon: DebugElement = fixture.debugElement.query(By.css('fa-icon'));
+        const icon: DebugElement = fixture.debugElement.query(
+            By.css('fa-icon')
+        );
 
         expect(icon.nativeElement.icon.iconName).toEqual('tint');
     });
 
     it('should show humidity', () => {
         component.humidity = 15;
-        const humidity: DebugElement = fixture.debugElement.query(By.css('strong'));
+        const humidity: DebugElement = fixture.debugElement.query(
+            By.css('strong')
+        );
         fixture.detectChanges();
 
         expect(humidity.nativeElement.textContent).toContain('15 %');

@@ -1,7 +1,7 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {TemperatureComponent} from './temperature.component';
-import {DebugElement} from '@angular/core';
-import {By} from '@angular/platform-browser';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TemperatureComponent } from './temperature.component';
+import { DebugElement } from '@angular/core';
+import { By } from '@angular/platform-browser';
 
 describe('TemperatureComponent', () => {
     let component: TemperatureComponent;
@@ -9,9 +9,8 @@ describe('TemperatureComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [TemperatureComponent]
-        })
-            .compileComponents();
+            declarations: [TemperatureComponent],
+        }).compileComponents();
     });
 
     beforeEach(() => {
@@ -26,13 +25,17 @@ describe('TemperatureComponent', () => {
     it('should show temperature', () => {
         component.temperature = 18;
         fixture.detectChanges();
-        const temperature: DebugElement = fixture.debugElement.query(By.css('span'));
+        const temperature: DebugElement = fixture.debugElement.query(
+            By.css('span')
+        );
 
         expect(temperature.nativeElement.textContent).toContain('18');
     });
 
     it('should show degree symbol', () => {
-        const degreeSymbol: DebugElement = fixture.debugElement.queryAll(By.css('span'))[1];
+        const degreeSymbol: DebugElement = fixture.debugElement.queryAll(
+            By.css('span')
+        )[1];
 
         expect(degreeSymbol.nativeElement.textContent).toContain('°C');
     });

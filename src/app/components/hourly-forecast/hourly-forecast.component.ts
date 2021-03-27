@@ -1,43 +1,47 @@
-import {Component} from '@angular/core';
-import {ActivatedRoute, Params} from '@angular/router';
-import {IHourlyForecast} from '../../../interfaces/IHourlyForecast';
-import {ICoordination} from '../../../interfaces/ICoordination';
-import {faChevronLeft} from '@fortawesome/free-solid-svg-icons';
-import {HourlyForecastService} from '../../../services/hourly-forecast/hourly-forecast.service';
-import {SpinnerService} from '../../../services/spinner/spinner.service';
+import { Component } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { IHourlyForecast } from '../../../interfaces/IHourlyForecast';
+import { ICoordination } from '../../../interfaces/ICoordination';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { HourlyForecastService } from '../../../services/hourly-forecast/hourly-forecast.service';
+import { SpinnerService } from '../../../services/spinner/spinner.service';
 
 @Component({
     selector: 'app-hourly-forecast',
     templateUrl: './hourly-forecast.component.html',
-    styleUrls: ['./hourly-forecast.component.scss']
+    styleUrls: ['./hourly-forecast.component.scss'],
 })
 export class HourlyForecastComponent {
     public hourlyForecast: IHourlyForecast = null;
     public faChevronLeft = faChevronLeft;
 
-    constructor(private route: ActivatedRoute,
-                public spinnerService: SpinnerService,
-                private hourlyForecastService: HourlyForecastService) {
+    constructor(
+        private route: ActivatedRoute,
+        public spinnerService: SpinnerService,
+        private hourlyForecastService: HourlyForecastService
+    ) {
         this.getCoordinationFromQueryParam();
     }
 
     private getCoordinationFromQueryParam(): void {
-        this.route.queryParams
-            .subscribe((param: Params) => {
-                const lat = Number(param.lat);
-                const lon = Number(param.lon);
-                this.getHourlyForecastData({lat, lon});
-            });
+        this.route.queryParams.subscribe((param: Params) => {
+            const lat = Number(param.lat);
+            const lon = Number(param.lon);
+            this.getHourlyForecastData({ lat, lon });
+        });
     }
 
     private getHourlyForecastData(coordination: ICoordination): void {
         this.spinnerService.loading = true;
-        this.hourlyForecastService.getHourlyForecastByCityName(coordination)
-            .subscribe((hourlyForecast: IHourlyForecast) => {
+        this.hourlyForecastService
+            .getHourlyForecastByCityName(coordination)
+            .subscribe(
+                (hourlyForecast: IHourlyForecast) => {
                     this.hourlyForecast = hourlyForecast;
                     this.spinnerService.loading = false;
                 },
-                _ => this.spinnerService.loading = false);
+                (_) => (this.spinnerService.loading = false)
+            );
     }
 
     public getCityNameFromTimeZone(timeZone: string): string {
