@@ -8,6 +8,7 @@ import {HourlyForecastComponent} from './components/hourly-forecast/hourly-forec
 import {AppRoutingModule} from './app-routing.module';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {HourlyForecastModule} from './components/hourly-forecast/hourly-forecast.module';
+import {SharedModule} from './components/shared/shared.module';
 
 const DECLARATIONS: any[] = [
     AppComponent,
@@ -21,7 +22,8 @@ const MODULES: any[] = [
     HttpClientModule,
     AppRoutingModule,
     FontAwesomeModule,
-    HourlyForecastModule
+    HourlyForecastModule,
+    SharedModule
 ];
 
 @NgModule({
