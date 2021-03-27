@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { faWind } from '@fortawesome/free-solid-svg-icons';
-import { WeatherDetailHelperService } from '../../../../helpers/weather-detail/weather-detail-helper.service';
+import { WeatherDetailHelperService } from '../../../helpers/weather-detail/weather-detail-helper.service';
 
 @Component({
     selector: 'app-wind',
