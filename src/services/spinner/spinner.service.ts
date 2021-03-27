@@ -6,9 +6,6 @@ import {Injectable} from '@angular/core';
 export class SpinnerService {
     private _loading: boolean = false;
 
-    constructor() {
-    }
-
     get loading(): boolean {
         return this._loading;
     }

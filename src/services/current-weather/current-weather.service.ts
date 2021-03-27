@@ -25,7 +25,6 @@ export class CurrentWeatherService {
      *          wind speed is `meter/sec`
      *          temperature is `Celsius`
      *
-     * @see [Current Weather Data](https://openweathermap.org/current#data)
      *
      * @returns Observable<ICurrentWeather>; list of current weather of the cities
      */

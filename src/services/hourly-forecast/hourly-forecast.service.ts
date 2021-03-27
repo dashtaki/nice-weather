@@ -17,7 +17,7 @@ export class HourlyForecastService {
      * Unit is `metric`:
      *          wind speed is `meter/sec`
      *          temperature is `Celsius`
-     * @see [Hourly Forecast](https://openweathermap.org/api/hourly-forecast)
+     *
      *
      * @param coordination: ICoordination;
      *
