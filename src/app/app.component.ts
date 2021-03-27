@@ -10,7 +10,3 @@ export class AppComponent {
     constructor(public spinnerService: SpinnerService) {
     }
 }
-
-// TODO: Documentation
-// TODO: support alert in forecast
-// TODO: lint

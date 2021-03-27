@@ -48,6 +48,12 @@ describe('HourlyForecastComponent', () => {
         expect(hourlyForecastService.getHourlyForecastByCityName).toHaveBeenCalledWith(expectedCoordination);
     });
 
+    it('should return if timezone is null', () => {
+        const actualCityName: string = component.getCityNameFromTimeZone(null);
+
+        expect(actualCityName).toBeUndefined();
+    });
+
     it('should get city name based on timezone', () => {
         const actualCityName: string = component.getCityNameFromTimeZone('Asia/Tehran');
 
