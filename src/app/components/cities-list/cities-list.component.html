@@ -1,6 +1,6 @@
 <section class="d-flex justify-content-center align-items-center w-100 h-100 min-vh-100 current-weather__wrapper">
     <ul class="current-weather__card">
-        <li *ngFor="let city of citiesWeather" (click)="showHourlyWeather(city.coord)">
+        <li *ngFor="let city of citiesWeather" (click)="showHourlyForecast(city.coord)">
             <h2 class="current-weather__city-name">{{city.name}}</h2>
 
             <img src='{{ weatherDetailHelper.makeWeatherIconSrc(city.weather[0].icon) }}'

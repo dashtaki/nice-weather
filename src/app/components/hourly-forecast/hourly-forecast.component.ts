@@ -7,11 +7,11 @@ import {ICoordination} from '../../../interfaces/ICoordination';
 import {faChevronLeft} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-    selector: 'app-hourly-weather',
-    templateUrl: './hourly-weather.component.html',
-    styleUrls: ['./hourly-weather.component.scss']
+    selector: 'app-hourly-forecast',
+    templateUrl: './hourly-forecast.component.html',
+    styleUrls: ['./hourly-forecast.component.scss']
 })
-export class HourlyWeatherComponent {
+export class HourlyForecastComponent {
     public hourlyForecast: IHourlyForecast = null;
     public faChevronLeft = faChevronLeft;
 
@@ -26,12 +26,12 @@ export class HourlyWeatherComponent {
             .subscribe((param: Params) => {
                 const lat = Number(param.lat);
                 const lon = Number(param.lon);
-                this.getHourlyWeatherData({lat, lon});
+                this.getHourlyForecastData({lat, lon});
             });
     }
 
-    private getHourlyWeatherData(coordination: ICoordination): void {
-        this.weatherService.getHourlyWeatherByCityName(coordination)
+    private getHourlyForecastData(coordination: ICoordination): void {
+        this.weatherService.getHourlyForecastByCityName(coordination)
             .subscribe((hourlyForecast: IHourlyForecast) => this.hourlyForecast = hourlyForecast);
     }
 

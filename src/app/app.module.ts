@@ -4,15 +4,15 @@ import {AppComponent} from './app.component';
 import {CitiesListComponent} from './components/cities-list/cities-list.component';
 import {CommonModule} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
-import {HourlyWeatherComponent} from './components/hourly-weather/hourly-weather.component';
+import {HourlyForecastComponent} from './components/hourly-forecast/hourly-forecast.component';
 import {AppRoutingModule} from './app-routing.module';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
-import {HourlyForecastModule} from './components/hourly-weather/hourly-forecast.module';
+import {HourlyForecastModule} from './components/hourly-forecast/hourly-forecast.module';
 
 const DECLARATIONS: any[] = [
     AppComponent,
     CitiesListComponent,
-    HourlyWeatherComponent,
+    HourlyForecastComponent,
 ];
 
 const MODULES: any[] = [

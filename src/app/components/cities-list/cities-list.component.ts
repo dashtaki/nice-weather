@@ -24,7 +24,7 @@ export class CitiesListComponent {
             .subscribe((weathers: ICurrentWeather[]) => this.citiesWeather = weathers);
     }
 
-    public showHourlyWeather(coordination: ICoordination): void {
+    public showHourlyForecast(coordination: ICoordination): void {
         const {lat, lon} = coordination;
         this.router.navigate(['/hourly'], {queryParams: {lat, lon}});
     }

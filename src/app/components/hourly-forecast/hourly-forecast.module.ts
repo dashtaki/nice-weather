@@ -8,13 +8,13 @@ import {FeelsLikeComponent} from './feels-like/feels-like.component';
 import {TemperatureComponent} from './temperature/temperature.component';
 import {TimeComponent} from './time/time.component';
 import {RouterModule, Routes} from '@angular/router';
-import {HourlyWeatherComponent} from './hourly-weather.component';
+import {HourlyForecastComponent} from './hourly-forecast.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 const routes: Routes = [
     {
         path: '',
-        component: HourlyWeatherComponent
+        component: HourlyForecastComponent
     }
 ];
 

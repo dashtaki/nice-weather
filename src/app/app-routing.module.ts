@@ -14,7 +14,7 @@ const routes: Route[] = [
     },
     {
         path: 'hourly',
-        loadChildren: () => import('./components/hourly-weather/hourly-forecast.module')
+        loadChildren: () => import('./components/hourly-forecast/hourly-forecast.module')
             .then((hourlyForecast) => hourlyForecast.HourlyForecastModule)
     }
 ];

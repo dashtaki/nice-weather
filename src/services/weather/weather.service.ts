@@ -52,7 +52,7 @@ export class WeatherService {
      *
      * @returns Observable<IHourlyForecast>
      */
-    public getHourlyWeatherByCityName(coordination: ICoordination): Observable<IHourlyForecast> {
+    public getHourlyForecastByCityName(coordination: ICoordination): Observable<IHourlyForecast> {
         const {lat, lon} = coordination;
         const url: string = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=current,minutely,daily`;
         return this.transportService.Read(url);
