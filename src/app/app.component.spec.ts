@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { AppComponent } from './app.component';
-import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
-import { SpinnerService } from '../services/spinner/spinner.service';
-import { By } from '@angular/platform-browser';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {AppComponent} from './app.component';
+import {CUSTOM_ELEMENTS_SCHEMA, DebugElement} from '@angular/core';
+import {By} from '@angular/platform-browser';
+import {SpinnerService} from './services/spinner/spinner.service';
 
 describe('AppComponent', () => {
     let component: AppComponent;
@@ -16,7 +16,7 @@ describe('AppComponent', () => {
             declarations: [AppComponent],
             schemas: [CUSTOM_ELEMENTS_SCHEMA],
             providers: [
-                { provide: SpinnerService, useValue: mockSpinnerService },
+                {provide: SpinnerService, useValue: mockSpinnerService},
             ],
         }).compileComponents();
     });

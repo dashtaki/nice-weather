@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { IHourlyForecast } from '../../../interfaces/IHourlyForecast';
-import { ICoordination } from '../../../interfaces/ICoordination';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import {SpinnerService} from '../../services/spinner/spinner.service';
 import {HourlyForecastService} from '../../services/hourly-forecast/hourly-forecast.service';
+import {IHourlyForecast} from '../../interfaces/IHourlyForecast';
+import {ICoordination} from '../../interfaces/ICoordination';
 
 @Component({
     selector: 'app-hourly-forecast',

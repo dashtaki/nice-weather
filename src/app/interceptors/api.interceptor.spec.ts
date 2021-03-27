@@ -7,8 +7,8 @@ import {
     HttpTestingController,
     TestRequest,
 } from '@angular/common/http/testing';
-import { TransportService } from '../../services/transport.service';
 import { API_KEY } from '../../constants/ApiConstants';
+import {TransportService} from '../services/transport.service';
 
 describe('ApiInterceptor', () => {
     let mockRouter;

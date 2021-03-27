@@ -4,9 +4,9 @@ import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
 import { hourlyForecastMock } from '../../../mock-data/hourly-forecast-mock';
 import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
-import { ICoordination } from '../../../interfaces/ICoordination';
 import { By } from '@angular/platform-browser';
-import { HourlyForecastService } from '../../../services/hourly-forecast/hourly-forecast.service';
+import {HourlyForecastService} from '../../services/hourly-forecast/hourly-forecast.service';
+import {ICoordination} from '../../interfaces/ICoordination';
 
 describe('HourlyForecastComponent', () => {
     let component: HourlyForecastComponent;

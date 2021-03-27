@@ -1,14 +1,14 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CitiesListComponent } from './cities-list.component';
 import { By } from '@angular/platform-browser';
-import { CurrentWeatherService } from '../../../services/current-weather/current-weather.service';
 import { of } from 'rxjs';
 import { mockCurrentWeathers } from '../../../mock-data/current-weather-mock';
 import { DebugElement } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router } from '@angular/router';
-import { ICoordination } from '../../../interfaces/ICoordination';
-import { SpinnerService } from '../../../services/spinner/spinner.service';
+import {CurrentWeatherService} from '../../services/current-weather/current-weather.service';
+import {SpinnerService} from '../../services/spinner/spinner.service';
+import {ICoordination} from '../../interfaces/ICoordination';
 
 describe('CitiesListComponent', () => {
     let component: CitiesListComponent;

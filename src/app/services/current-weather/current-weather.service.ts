@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { TransportService } from '../transport.service';
 import { combineLatest, Observable } from 'rxjs';
-import {ICurrentWeather} from '../../../interfaces/ICurrentWeather';
+import {ICurrentWeather} from '../../interfaces/ICurrentWeather';
 
 @Injectable({
     providedIn: 'root',

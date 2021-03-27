@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TransportService } from '../transport.service';
-import {ICoordination} from '../../../interfaces/ICoordination';
-import {IHourlyForecast} from '../../../interfaces/IHourlyForecast';
+import {ICoordination} from '../../interfaces/ICoordination';
+import {IHourlyForecast} from '../../interfaces/IHourlyForecast';
 
 @Injectable({
     providedIn: 'root',

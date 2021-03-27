@@ -1,4 +1,4 @@
-import { IHourData } from '../interfaces/IHourData';
+import {IHourData} from '../app/interfaces/IHourData';
 
 export const mockHourData: IHourData[] = [
     {

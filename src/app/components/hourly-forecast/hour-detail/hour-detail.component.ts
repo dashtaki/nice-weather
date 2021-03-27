@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IHourData } from '../../../../interfaces/IHourData';
+import {IHourData} from '../../../interfaces/IHourData';
 
 @Component({
     selector: 'app-hour-detail',

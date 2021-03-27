@@ -1,4 +1,4 @@
-import { ICurrentWeather } from '../interfaces/ICurrentWeather';
+import {ICurrentWeather} from '../app/interfaces/ICurrentWeather';
 
 export const mockCurrentWeathers: ICurrentWeather[] = [
     {

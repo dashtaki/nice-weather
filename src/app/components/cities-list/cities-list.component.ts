@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { ICurrentWeather } from '../../../interfaces/ICurrentWeather';
 import { Router } from '@angular/router';
-import { ICoordination } from '../../../interfaces/ICoordination';
 import {CitiesListFacadeService} from '../../facade/cities-list/cities-list-facade.service';
+import {ICurrentWeather} from '../../interfaces/ICurrentWeather';
+import {ICoordination} from '../../interfaces/ICoordination';
 
 @Component({
     selector: 'app-cities-list',

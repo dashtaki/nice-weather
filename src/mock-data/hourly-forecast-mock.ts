@@ -1,4 +1,4 @@
-import { IHourlyForecast } from '../interfaces/IHourlyForecast';
+import {IHourlyForecast} from '../app/interfaces/IHourlyForecast';
 
 export const hourlyForecastMock: IHourlyForecast = {
     hourly: [
