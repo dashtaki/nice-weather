@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {faUmbrellaBeach} from '@fortawesome/free-solid-svg-icons';
+import {WeatherDetailHelperService} from '../../../helpers/weather-detail/weather-detail-helper.service';
 
 @Component({
     selector: 'app-uv-index',
@@ -10,6 +11,6 @@ export class UvIndexComponent {
     public faUmbrellaBeach = faUmbrellaBeach;
     @Input() uvIndex: number;
 
-    constructor() {
+    constructor(public weatherDetailHelper: WeatherDetailHelperService) {
     }
 }

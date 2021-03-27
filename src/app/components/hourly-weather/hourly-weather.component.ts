@@ -34,4 +34,8 @@ export class HourlyWeatherComponent {
         this.weatherService.getHourlyWeatherByCityName(coordination)
             .subscribe((hourlyForecast: IHourlyForecast) => this.hourlyForecast = hourlyForecast);
     }
+
+    public getCityNameFromTimeZone(timeZone: string): string {
+        return timeZone.split('/')[1];
+    }
 }

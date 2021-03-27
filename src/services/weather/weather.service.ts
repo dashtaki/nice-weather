@@ -18,7 +18,7 @@ export class WeatherService {
      * @returns string[]
      */
     get cities(): string[] {
-        return ['london', 'tallinn', 'amsterdam', 'berlin', 'paris'];
+        return ['tehran', 'tallinn', 'amsterdam', 'berlin', 'paris'];
     }
 
     /**
