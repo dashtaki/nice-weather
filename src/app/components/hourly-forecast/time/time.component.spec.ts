@@ -25,7 +25,7 @@ describe('TimeComponent', () => {
     });
 
     it('should show date time with right format', () => {
-        component.uniTime = 1616846400;
+        component.unixTime = 1616846400;
         fixture.detectChanges();
         const time: DebugElement = fixture.debugElement.query(By.css('span'));
 

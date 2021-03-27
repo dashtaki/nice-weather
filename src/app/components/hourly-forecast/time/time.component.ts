@@ -6,5 +6,5 @@ import {Component, Input} from '@angular/core';
     styleUrls: ['./time.component.scss']
 })
 export class TimeComponent {
-    @Input() uniTime: number;
+    @Input() unixTime: number;
 }
