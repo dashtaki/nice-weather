@@ -1,0 +1,8 @@
+---
+- name: Run patching playbook
+  hosts: all
+  become: true
+  roles:
+    - role: patching
+      vars:
+        patching_type: REBOOT

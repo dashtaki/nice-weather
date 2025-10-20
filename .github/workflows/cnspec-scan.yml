@@ -1,0 +1,75 @@
+name: Ansible Inventory Scan with Mondoo cnspec
+
+on:
+  workflow_dispatch:
+    inputs:
+      comment:
+        description: "Optional comment about this scan run"
+        required: false
+        type: string
+
+jobs:
+  cnspec-scan:
+    name: Scan Inventory with cnspec
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+          python-version: "3.12"
+          cache-dependency-glob: |
+            **/requirements.txt
+
+      - name: Install dependencies
+        run: |
+          uv venv
+          if [ -f requirements.txt ]; then
+            uv pip install -r requirements.txt
+          else
+            uv pip install ansible
+          fi
+          echo "$PWD/.venv/bin" >> $GITHUB_PATH
+
+      - name: Set up SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          echo "Host *
+            StrictHostKeyChecking no
+            UserKnownHostsFile=/dev/null
+          " > ~/.ssh/config
+          chmod 600 ~/.ssh/config
+
+      - name: Install cnspec
+        run: |
+          # Install cnspec using the official installation script
+          bash -c "$(curl -sSL https://install.mondoo.com/sh)"
+          # Verify installation
+          cnspec version
+
+      - name: Run security scan
+        env:
+          MONDOO_CONFIG_BASE64: ${{ secrets.MONDOO_CONFIG_BASE64 }}
+        run: |
+          ansible-inventory -i inventory.yml --list | cnspec scan --detect-cicd=false --inventory-file - --inventory-format-ansible
+
+      - name: Record scan details
+        if: success()
+        run: |
+          echo "Cnspec security scan completed for all inventory hosts"
+          echo "Requested by: ${{ github.actor }}"
+          echo "Time: $(date)"
+          if [ ! -z "${{ github.event.inputs.comment }}" ]; then
+            echo "Comment: ${{ github.event.inputs.comment }}"
+          fi
+
+      - name: Clean up SSH key and config files
+        if: always()
+        run: |
+          rm -f ~/.ssh/id_ed25519 ~/.ssh/config

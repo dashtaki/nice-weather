@@ -1,0 +1,41 @@
+# Copyright (c) Mondoo, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+#
+# Gather facts to determine OS distribution
+- name: Gather facts
+  ansible.builtin.setup:
+    gather_subset:
+      - '!all'
+      - '!min'
+      - distribution
+  when: ansible_facts['distribution'] is not defined
+
+# Run pre-patching verification tasks
+- name: Run pre-patching tasks
+  ansible.builtin.import_tasks: pre_patching.yml
+
+# Include OS-family specific base patching tasks
+- name: Include Debian-based patching tasks (Debian/Ubuntu)
+  ansible.builtin.include_tasks: debian_based.yml
+  when: ansible_facts['os_family'] == "Debian"
+
+- name: Include RedHat patching tasks
+  ansible.builtin.include_tasks: redhat.yml
+  when: ansible_facts['os_family'] == "RedHat"
+
+# Include host-specific patching tasks using fileglob
+- name: Include host-specific patching tasks
+  ansible.builtin.include_tasks: "{{ item }}"
+  with_fileglob:
+    - "{{ role_path }}/tasks/hosts/{{ inventory_hostname }}/*.yml"
+  register: patching_host_specific_tasks
+
+# Run cnspec scan if Trigger_cnspec_scan is set to true
+- name: Trigger cnspec scan
+  ansible.builtin.shell:
+    cmd: cnspec scan
+  args:
+    executable: /bin/bash
+  changed_when: false
+  become: true
+  when: patching_trigger_cnspec_scan

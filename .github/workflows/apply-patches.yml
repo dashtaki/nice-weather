@@ -1,0 +1,95 @@
+name: Ansible Apply Patches
+
+on:
+  workflow_dispatch:
+    inputs:
+      hostname:
+        description: "Hostname from inventory to patch"
+        required: true
+        type: string
+      reboot:
+        description: "Reboot system after patching"
+        required: true
+        type: boolean
+        default: false
+      comment:
+        description: "Optional comment about this patching run"
+        required: false
+        type: string
+
+jobs:
+  apply-patches:
+    name: Apply Patches to Host
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+          python-version: "3.12"
+          cache-dependency-glob: |
+            **/requirements.txt
+
+      - name: Install dependencies
+        run: |
+          uv venv
+          if [ -f requirements.txt ]; then
+            uv pip install -r requirements.txt
+          else
+            uv pip install ansible
+          fi
+          echo "$PWD/.venv/bin" >> $GITHUB_PATH
+
+      - name: Set up SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+
+      - name: Setup Ansible Environment Variables
+        run: |
+          if [ -n "${{ vars.SSH_USERNAME }}" ]; then
+            echo "ANSIBLE_REMOTE_USER=${{ vars.SSH_USERNAME }}" >> $GITHUB_ENV
+            echo "Using SSH_USERNAME variable: ${{ vars.SSH_USERNAME }}"
+          else
+            echo "No SSH_USERNAME variable set, using Ansible default behavior"
+          fi
+          echo "ANSIBLE_HOST_KEY_CHECKING=false" >> $GITHUB_ENV
+          echo "ANSIBLE_SSH_PRIVATE_KEY_FILE=~/.ssh/id_ed25519" >> $GITHUB_ENV
+
+      - name: Run Ansible ping
+        run: |
+          ansible ${{ github.event.inputs.hostname }} -i inventory.yml -m ping
+
+      - name: Apply patches
+        run: |
+          # Set patching_type based on user input
+          REBOOT_OPT=""
+          if [ "${{ github.event.inputs.reboot }}" == "true" ]; then
+            REBOOT_OPT="patching_type=REBOOT"
+          else
+            REBOOT_OPT="patching_type=NOREBOOT"
+          fi
+
+          # Run the playbook for the selected host only
+          ansible-playbook playbook.yml -i inventory.yml --limit ${{ github.event.inputs.hostname }} -e "$REBOOT_OPT"
+
+      - name: Record patching details
+        if: success()
+        run: |
+          echo "Patching completed for host: ${{ github.event.inputs.hostname }}"
+          echo "Requested by: ${{ github.actor }}"
+          echo "Time: $(date)"
+          echo "Reboot: ${{ github.event.inputs.reboot }}"
+          if [ ! -z "${{ github.event.inputs.comment }}" ]; then
+            echo "Comment: ${{ github.event.inputs.comment }}"
+          fi
+
+      - name: Clean up SSH key
+        if: always()
+        run: |
+          rm -rf ~/.ssh

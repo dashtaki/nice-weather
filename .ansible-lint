@@ -1,0 +1,31 @@
+---
+# .ansible-lint configuration file
+
+# Exclude specific rules from linting
+skip_list:
+  - 'yaml[line-length]'  # Line length
+  - 'role-name'  # Role name validation (in case you prefer your current naming convention)
+
+# Enable specific rules
+enable_list:
+  - fqcn-builtins  # Use fully qualified collection names
+  - no-log-password  # Security check for logging passwords
+  - no-same-owner  # Check for unnecessary owner/group parameters
+
+# Define paths to exclude from linting
+exclude_paths:
+  - .git/
+  - .github/
+  - .venv/
+  - .cache/
+
+# Modify rule-specific settings
+warn_list:
+  - ignore-errors
+  - no-changed-when
+
+# Use default rules plus customization
+use_default_rules: true
+
+# Customized verbosity level of rule list
+verbosity: 1

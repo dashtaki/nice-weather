@@ -1,0 +1,9 @@
+# Copyright (c) Mondoo, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+# handlers file for patching
+- name: Reboot_system
+  ansible.builtin.reboot:
+    msg: "The reboot was initiated by Ansible following the update."
+    reboot_timeout: 300  # 5 minutes timeout
+    pre_reboot_delay: 10 # 10 seconds delay before reboot

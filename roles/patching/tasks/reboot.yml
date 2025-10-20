@@ -1,0 +1,8 @@
+# Copyright (c) Mondoo, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+# reboot system if patching_type is set to REBOOT
+- name: "Reboot system"
+  ansible.builtin.reboot:
+    msg: "The reboot was initiated by Ansible following the update."
+  become: true

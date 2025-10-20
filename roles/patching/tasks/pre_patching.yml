@@ -1,0 +1,9 @@
+# Copyright (c) Mondoo, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+#
+# Pre-patching verification tasks
+
+- name: Check if system is ready for patching
+  ansible.builtin.command: df -h
+  register: patching_disk_space
+  changed_when: false

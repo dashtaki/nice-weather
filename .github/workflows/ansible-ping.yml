@@ -1,0 +1,73 @@
+name: Ansible Ping Check
+
+on:
+  workflow_dispatch: # Allows manual triggering
+    inputs:
+      cache_only:
+        description: "Only install dependencies and cache them (skip ping test)"
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  ping-hosts:
+    name: Ping Ansible Hosts
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+          python-version: "3.12"
+          cache-dependency-glob: |
+            **/requirements.txt
+
+      - name: Install dependencies
+        run: |
+          uv venv
+          if [ -f requirements.txt ]; then
+            uv pip install -r requirements.txt
+          else
+            uv pip install ansible
+          fi
+          echo "$PWD/.venv/bin" >> $GITHUB_PATH
+
+      - name: Set up SSH key
+        if: ${{ !inputs.cache_only }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+
+      - name: Setup Ansible Environment Variables
+        if: ${{ !inputs.cache_only }}
+        run: |
+          if [ -n "${{ vars.SSH_USERNAME }}" ]; then
+            echo "ANSIBLE_REMOTE_USER=${{ vars.SSH_USERNAME }}" >> $GITHUB_ENV
+            echo "Using SSH_USERNAME variable: ${{ vars.SSH_USERNAME }}"
+          else
+            echo "No SSH_USERNAME variable set, using Ansible default behavior"
+          fi
+          echo "ANSIBLE_HOST_KEY_CHECKING=false" >> $GITHUB_ENV
+          echo "ANSIBLE_SSH_PRIVATE_KEY_FILE=~/.ssh/id_ed25519" >> $GITHUB_ENV
+
+
+      - name: Run Ansible ping
+        if: ${{ !inputs.cache_only }}
+        run: |
+          ansible all -i inventory.yml -m ping
+
+      - name: Clean up SSH key
+        if: always() && !inputs.cache_only
+        run: |
+          rm -rf ~/.ssh
+
+      - name: Cache preparation complete
+        if: ${{ inputs.cache_only }}
+        run: |
+          echo "Python package cache has been prepared with the following packages:"
+          uv pip list

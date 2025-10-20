@@ -1,0 +1,2 @@
+# Requirements file for runtime/production environment
+ansible>=11,<12

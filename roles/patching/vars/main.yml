@@ -1,0 +1,19 @@
+# Copyright (c) Mondoo, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+#
+# vars file for ansible patching role
+
+# Package management options
+patching_apt_options:
+  update_cache: true
+  cache_valid_time: 3600
+  only_upgrade: true
+  force_apt_get: true
+
+patching_yum_options:
+  update_cache: true
+  security: true
+
+# Error handling defaults
+patching_package_retry_attempts: 3
+patching_package_retry_delay: 5

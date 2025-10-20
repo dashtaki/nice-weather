@@ -1,0 +1,19 @@
+# Copyright (c) Mondoo, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+#
+# Tasks for Debian-based systems (Debian and Ubuntu)
+
+- name: Update apt cache
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: "{{ patching_apt_options.cache_valid_time }}"
+  register: patching_apt_update
+  retries: "{{ patching_package_retry_attempts }}"
+  delay: "{{ patching_package_retry_delay }}"
+  until: patching_apt_update is success
+
+- name: Notify reboot if needed
+  ansible.builtin.command: /bin/true
+  changed_when: patching_type == "REBOOT"
+  notify: Reboot_system
+  when: patching_type == "REBOOT"

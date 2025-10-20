@@ -1,0 +1,18 @@
+# Copyright (c) Mondoo, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+#
+# Tasks for RedHat systems
+
+- name: Update yum cache
+  ansible.builtin.dnf:
+    update_cache: "{{ patching_yum_options.update_cache }}"
+  register: patching_yum_update
+  retries: "{{ patching_package_retry_attempts }}"
+  delay: "{{ patching_package_retry_delay }}"
+  until: patching_yum_update is success
+
+- name: Notify reboot if needed
+  ansible.builtin.command: /bin/true
+  changed_when: patching_type == "REBOOT"
+  notify: Reboot_system
+  when: patching_type == "REBOOT"
